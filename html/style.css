@@ -12,6 +12,30 @@
     src: url("../assets/fonts/body.otf") format("opentype");
 }
 
+/* Color palette */
+:root{
+    --onyx: #3D3D3DFF;
+    --silver: #9C9C9C;
+    --white: #EBEBEB;
+    --falu-red: #712121FF;
+}
+
+.my-custom-site header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 100px;
+    z-index: 1000; /* Ensure this is higher than the carousel's z-index */
+    background: transparent; /* or any color, ensuring the header is not transparent */
+    transition: 0.6s;
+}
+
+
 *{
     margin: 0;
     padding: 0;
@@ -21,35 +45,13 @@
     
 }
 
-/* Color palette */
-:root{
-    --onyx: #3D3D3DFF;
-    --silver: #9C9C9C;
-    --white: #EBEBEB;
-    --falu-red: #712121FF;
-}
-
 /* header*/
 body{
     background-color: var(--onyx);
     min-height: 200vh;
 }
 
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 30vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: 0.6s;
-    padding: 40px 100px;
-    z-index: 1;
-}
-
-header .logo{
+.my-custom-site header .logo{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -65,19 +67,19 @@ header .logo{
     font-family: LOGO;
 }
 
-header ul{
+.my-custom-site header ul{
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-header ul li{
+.my-custom-site header ul li{
     position: relative;
     list-style: none;
 }
 
-header ul li a{
+.my-custom-site header ul li a{
     position: relative;
     margin: 0 15px;
     text-decoration: none;
@@ -87,33 +89,33 @@ header ul li a{
     transition: 0.6s;
 }
 
-header.sticky{
+.my-custom-site header.sticky{
     padding: 5 100px;
     background-color: var(--white);
     height: 10%;
 }
 
-header ul li:not(#navToggle) {
+.my-custom-site header ul li:not(#navToggle) {
     display: none;
 }
 
-header.sticky ul li:not(#navToggle) {
+.my-custom-site header.sticky ul li:not(#navToggle) {
     display: block;
 }
 
-header.sticky .logo{
+.my-custom-site header.sticky .logo{
     font-size: clamp(50px, 2.5vh, 32px) !important;
     color: var(--onyx);
     transition: 0.6s;
 }
 
-header.sticky ul li a {
+.my-custom-site header.sticky ul li a {
     color: var(--onyx); /* Change text color to black */
 }
 
 
 /*nav bar*/
-nav{
+.my-custom-site nav{
     position: fixed;
     display: none;
     height: 100vh;
@@ -126,16 +128,22 @@ nav{
     z-index: 2;
 }
 
-nav.active{
-    display: block;
-    transform: translateX(0);
+.my-custom-site nav.active {
+    position: fixed; /* Use fixed to keep it in view */
+    right: 0; /* Align to the right side of the viewport */
+    top: 0;
+    width: 20%; /* Or whatever width you prefer */
+    height: 100vh; /* Full viewport height */
+    z-index: 1050; /* Above other content */
+    display: block; /* Show the nav */
+    transform: 0.6s; /* Remove transform if not needed for animation */
 }
  
-nav .logo{
+.my-custom-site nav .logo{
     margin: 10px 0 20px;
 }
  
-nav .logo a{
+.my-custom-site nav .logo a{
     font-size: 22px;
     color: var(--white);
     padding: 10px;
@@ -147,41 +155,42 @@ nav .logo a{
     transition: .3s ease;
 }
  
-nav .logo a:hover{
+.my-custom-site nav .logo a:hover{
     padding-right: 20px;
 }
  
-nav .logo a i {
+.my-custom-site nav .logo a i {
     font-size: 27px;
     margin-right: 10px;
     transition: .5s ease-in-out;
 }
  
-nav .logo a:hover i {
+.my-custom-site nav .logo a:hover i {
     transform: rotate(180deg);
 }
 
-nav ul {
+.my-custom-site nav ul {
     position: relative;
 }
  
-nav ul li {
+.my-custom-site nav ul li {
     padding: 10px;
     font-weight: 500;
 }
  
-nav ul li a{
+.my-custom-site nav ul li a{
     color: var(--onyx);
     transition: all .5s ease;
 }
-nav ul li a:hover{
+
+.my-custom-site nav ul li a:hover{
     background-color: var(--falu-red);
     color: var(--white);
     display: block;
     padding-right: 10px;
 }
  
-button{
+.my-custom-site button{
     cursor: pointer;
     border: 1px solid var(--white);    
     color:var(--white);
@@ -197,16 +206,16 @@ button{
     transition: background-color .3s ease, transform .47s ease-in-out;
 }
  
-button:hover{
+.my-custom-site button:hover{
     background-color: var(--falu-red);
     color:var(--white);
 }
  
-button.active{
+.my-custom-site button.active{
     transform: translateX(-200px);
 }
 
-.nav-close-btn {
+.my-custom-site .nav-close-btn {
     position: relative;
     top: 10px;
     right: 10px;
@@ -216,4 +225,18 @@ button.active{
     color: var(--onyx);
     font-size: 24px;
     cursor: pointer;
+}
+
+.content-blur > *:not(nav):not(header) {
+    filter: blur(5px);
+}
+
+.click-shield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1045; /* Just below the nav bar */
+    display: none;
 }
