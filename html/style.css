@@ -1,5 +1,4 @@
 /* Custom fonts */
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&display=swap');
 
@@ -18,15 +17,21 @@
     padding: 0;
     box-sizing: border-box;
     font-family: BODY;
+
+    
 }
 
 /* Color palette */
+:root{
+    --onyx: #3D3D3DFF;
+    --silver: #9C9C9C;
+    --white: #EBEBEB;
+    --falu-red: #712121FF;
+}
+
 /* header*/
-
-
-
 body{
-    background-color: #212121;
+    background-color: var(--onyx);
     min-height: 200vh;
 }
 
@@ -51,7 +56,7 @@ header .logo{
     font-weight: 700;
     font-size: clamp(200px, 2.5vh, 32px) !important;
     text-decoration: none;
-    color: #fff;
+    color: var(--white);
     text-decoration: none;
     font-size: 2em;
     text-transform: uppercase;
@@ -76,7 +81,7 @@ header ul li a{
     position: relative;
     margin: 0 15px;
     text-decoration: none;
-    color: #fff;
+    color: var(--white);
     letter-spacing: 2px;
     font-weight: 500px;
     transition: 0.6s;
@@ -84,7 +89,7 @@ header ul li a{
 
 header.sticky{
     padding: 5 100px;
-    background-color: #fff;
+    background-color: var(--white);
     height: 10%;
 }
 
@@ -98,12 +103,12 @@ header.sticky ul li:not(#navToggle) {
 
 header.sticky .logo{
     font-size: clamp(50px, 2.5vh, 32px) !important;
-    color: #000;
+    color: var(--onyx);
     transition: 0.6s;
 }
 
 header.sticky ul li a {
-    color: #000; /* Change text color to black */
+    color: var(--onyx); /* Change text color to black */
 }
 
 
@@ -112,7 +117,7 @@ nav{
     position: fixed;
     display: none;
     height: 100vh;
-    background-color: gray;
+    background-color: var(--white);
     width: 200px;
     padding: 10px;
  
@@ -132,7 +137,7 @@ nav .logo{
  
 nav .logo a{
     font-size: 22px;
-    color: white;
+    color: var(--white);
     padding: 10px;
    
     font-weight: 700;
@@ -166,21 +171,21 @@ nav ul li {
 }
  
 nav ul li a{
-    color: #fff;
+    color: var(--onyx);
     transition: all .5s ease;
 }
 nav ul li a:hover{
-    background-color: #fff;
-    color: gray;
+    background-color: var(--falu-red);
+    color: var(--white);
     display: block;
     padding-right: 10px;
 }
  
 button{
     cursor: pointer;
-    border: 1px solid gray;    
-    color:gray;
-    background-color: #fff;
+    border: 1px solid var(--white);    
+    color:var(--white);
+    background-color: var(--falu-red);
     padding: 3px 5px;
     border-radius: 3px;
  
@@ -193,8 +198,8 @@ button{
 }
  
 button:hover{
-    background-color: gray;
-    color:#fff;
+    background-color: var(--falu-red);
+    color:var(--white);
 }
  
 button.active{
@@ -208,7 +213,7 @@ button.active{
     margin-bottom: 20px;
     border: none;
     background: none;
-    color: #fff;
+    color: var(--onyx);
     font-size: 24px;
     cursor: pointer;
 }
