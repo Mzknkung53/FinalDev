@@ -1,14 +1,29 @@
+/* Custom fonts */
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&display=swap');
+
+@font-face {
+    font-family: LOGO;
+    src: url("../assets/fonts/logo.otf") format("opentype");
+}
+
+@font-face {
+    font-family: BODY;
+    src: url("../assets/fonts/body.otf") format("opentype");
+}
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
+    font-family: BODY;
 }
 
+/* Color palette */
 /* header*/
+
+
 
 body{
     background-color: #212121;
@@ -42,6 +57,7 @@ header .logo{
     text-transform: uppercase;
     letter-spacing: 2px;
     transform: 0.6s;
+    font-family: LOGO;
 }
 
 header ul{
@@ -111,7 +127,7 @@ nav.active{
 }
  
 nav .logo{
-    margin: 10px 0 20px;    
+    margin: 10px 0 20px;
 }
  
 nav .logo a{
