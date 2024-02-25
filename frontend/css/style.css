@@ -31,7 +31,7 @@
     align-items: center;
     padding: 40px 100px;
     z-index: 1000; /* Ensure this is higher than the carousel's z-index */
-    background: transparent; /* or any color, ensuring the header is not transparent */
+    background: var(--onyx); /* or any color, ensuring the header is not transparent */
     transition: 0.6s;
 }
 
@@ -178,8 +178,7 @@ body{
 }
  
 .my-custom-site nav ul li a{
-    color: var(--onyx);
-    transition: all .5s ease;
+    color: var(--onyx); 
 }
 
 .my-custom-site nav ul li a:hover{
@@ -229,15 +228,18 @@ body{
 /* ---------------------------------------------------- */
 
 .Recommend h1 {
-    color: var(--white);
     text-align: left; 
     padding-left: 45px;
+    color: white;
+    padding-top: 40px;
+    font-size: 100px;
+    background-color: var(--onyx);
 }
 
 .Recommend-image {
     display: flex;
     flex-direction: row-reverse;
-    align-items: center;
+    align-items: flex-start; /* Align items to the start of the container, putting text at the top */
     background-color: var(--white); 
     padding: 20px; 
     margin-top: 20px; 
@@ -254,8 +256,35 @@ body{
     border-radius: 5px; 
 }
 
+.Word {
+    font-size: 75px; 
+    font-weight: bold; 
+    align-self: flex-start; 
+}
+
+.text-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    width: 100%; 
+}
+
 .Recommend {
     padding-left: 20px; 
     padding-right: 20px; 
+    color: var(--onyx);
 }
 
+.Word, .Limited {
+    margin: 0;
+}
+
+.Limited {
+    background-color: red;
+    color: white;
+    padding: 5px;
+    margin-top: 5px; 
+    font-size: 50px;
+    align-self: flex-start;
+    padding-right: 10px;
+}
