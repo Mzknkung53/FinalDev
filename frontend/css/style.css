@@ -251,12 +251,17 @@ body{
     }
 }
 
+section{
+    padding-bottom: 3rem;
+}
 
-
+#top{
+    padding-bottom: 0;
+}
 
 /* ---------------------------------------------------- */
 #recommend{
-    padding-top: 6.5rem;
+    padding-top: 3rem;
 }
 .Recommend {
     padding-top: 0;
@@ -264,68 +269,169 @@ body{
     padding-right: 20px; 
     color: var(--onyx);
     background-color: var(--onyx);
-}
-.Recommend h1 {
-    text-align: left; 
-    padding-left: 45px;
-    color: var(--white);
-    font-size: 100px;
+
+    h1 {
+        text-align: left; 
+        padding-left: 45px;
+        color: var(--white);
+        font-size: 100px;
+    }
+    
+    .container-fluid {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        background-color: var(--white); 
+        padding-top: 0;
+        border-radius: 10px; 
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 7rem;
+
+        img {
+            max-width: auto; 
+            max-height: 50vh; 
+            width: auto; 
+            height: auto; 
+            margin-right: 20px; 
+            border-radius: 5px; 
+        }
+
+        .text-block {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; 
+            width: fit-content; 
+
+            .item-name, .tag, .price {
+                margin: 0;
+            }
+            .item-name {
+                font-size: 50px; 
+                font-weight: bold; 
+            }
+            .tag {
+                display: flex;
+                align-self: flex-start;
+                background-color: var(--falu-red);
+                color: var(--white);
+                padding: 1rem;
+                padding-bottom: 0;
+                font-size: 50px;
+                margin-top: 2rem;
+            }
+            .price {
+                display: flex;
+                color: var(--onyx);
+                font-size: 50px;
+                font-style: bold;
+                align-self: flex-start;
+                margin-top: 1.5rem;
+
+                .icons{
+                    height: fit-content;
+                    width: fit-content;
+                    color: var(--onyx);
+                    padding-left: 3rem;
+                    font-size: 50px;
+                    font-style: bold;
+                    align-self: flex-end;
+
+                    i{
+                        padding: 0 0.2rem;
+                    }
+                    i:hover::before{
+                        color: var(--falu-red);
+                    }
+                    i:active{
+                        color: var(--falu-red);
+                    }
+                    .bi-heart:hover::before{
+                        content: '\F415';
+                    }
+                    .bi-cart:hover::before{
+                        content: '\F23D';
+                    }
+                }
+            }
+        }
+    }
 }
 
-.Recommend-image {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-start; 
-    background-color: var(--white); 
-    padding: 20px;
+#carouselExample{
+    a{
+        margin-top: auto;
+        margin-bottom: auto;
+        width: 6.5rem;
+        height: rem;
+    }
+    .carousel-control-prev-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23712121FF' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+    }
+    .carousel-control-next-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23712121FF' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+    }
+}
+
+
+/* ---------------------------------------------------- */
+.Top-Seller {
     padding-top: 0;
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    padding: 7rem;
-}
-
-.Recommend-image img {
-    max-width: auto; 
-    max-height: 50vh; 
-    width: auto; 
-    height: auto; 
-    margin-right: 20px; 
-    border-radius: 5px; 
-}
-
-.Word {
-    font-size: 50px; 
-    font-weight: bold; 
-    align-self: flex-start; 
-}
-
-.text-block {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; 
-    width: 100%; 
-}
-
-.Word, .Limited, .PriceRe {
-    margin: 0;
-}
-
-.Limited {
-    background-color: var(--falu-red);
-    color: white;
-    padding: 1rem;
-    padding-bottom: 0;
-    padding-right: 9rem;
-    font-size: 50px;
-    margin-top: 2rem;
-    align-self: flex-start;
-}
-
-.PriceRe {
+    padding-left: 20px; 
+    padding-right: 20px; 
     color: var(--onyx);
-    margin-right: 9rem;
-    font-size: 50px;
-    align-self: flex-start;
-    font-style: bold;
-    margin-top: 1.5rem;
+    background-color: var(--onyx);
+    
+    h1 {
+        text-align: left; 
+        padding-left: 45px;
+        color: var(--white);
+        font-size: 100px;
+    }
+    
+    .container-fluid {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: var(--white);
+        padding-top: 0;
+        border-radius: 10px; 
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 7rem;
+        padding-bottom: 4rem;
+    
+        .img-container {
+            display: flex;
+            flex-direction: inherit;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+
+            img {
+                max-width: auto; 
+                max-height: 50vh; 
+                width: auto; 
+                height: auto; 
+                border-radius: 5px; 
+            }
+        }
+
+        button.btn{
+            margin-top: 3vh;
+            padding: 1vh 2vw 0 2vw;
+            border: none;
+            border-radius: 1vw;
+            font-size: 3vh;
+            height: 4rem;
+            color: var(--onyx);
+            background-color: var(--silver);
+            cursor: pointer;
+        }
+        button.btn:hover{
+            background-color: var(--falu-red);
+            color: var(--white);
+        }
+        button.btn.active{
+            background-color: var(--falu-red);
+            color: var(--white);
+        }
+    }
 }
