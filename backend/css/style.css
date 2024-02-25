@@ -41,20 +41,23 @@ body{
         padding: 0.5rem 1rem;
         margin-bottom: 1rem;
     }
-    
+
     button.btn {
+        width: 9em;
         border: var(--silver);
         background-color: var(--silver);
         padding: 0.5rem 1rem;
-        color: #2A2A2A;
+        margin: 0 0 1rem 0;
+        color: var(--white);
     }
     button.btn:hover {
         padding: 0.5rem 1rem;
-        background-color: var(--silver);
+        background-color: var(--white);
         color: var(--onyx);
     }
     button.btn.active {
         border: var(--white);
+        font-weight: 700;
         padding: 0.5rem 1rem;
         background-color: var(--white);
         color: var(--onyx);
