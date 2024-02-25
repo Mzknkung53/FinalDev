@@ -242,15 +242,33 @@ body{
 }
 
 /* ---------------------------------------------------- */
+#carouselExampleIndicators{
+    max-height: 140vh;
+
+    .carousel-inner{
+        height: 140vh;
+        background-color: var(--onyx);
+    }
+}
+
+
+
+
+/* ---------------------------------------------------- */
+#recommend{
+    padding-top: 6.5rem;
+}
 .Recommend {
-    padding-top: 3rem;
+    padding-top: 0;
+    padding-left: 20px; 
+    padding-right: 20px; 
+    color: var(--onyx);
     background-color: var(--onyx);
 }
 .Recommend h1 {
     text-align: left; 
     padding-left: 45px;
-    color: white;
-    padding-top: 40px;
+    color: var(--white);
     font-size: 100px;
 }
 
@@ -259,16 +277,16 @@ body{
     flex-direction: row-reverse;
     align-items: flex-start; 
     background-color: var(--white); 
-    padding: 20px; 
-    margin-top: 20px; 
+    padding: 20px;
+    padding-top: 0;
     border-radius: 10px; 
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     padding: 7rem;
 }
 
 .Recommend-image img {
-    max-width: 30vw; 
-    max-height: auto; 
+    max-width: auto; 
+    max-height: 50vh; 
     width: auto; 
     height: auto; 
     margin-right: 20px; 
@@ -288,31 +306,26 @@ body{
     width: 100%; 
 }
 
-.Recommend {
-    padding-left: 20px; 
-    padding-right: 20px; 
-    color: var(--onyx);
-}
-
 .Word, .Limited, .PriceRe {
     margin: 0;
 }
 
 .Limited {
-    background-color: red;
+    background-color: var(--falu-red);
     color: white;
-    padding: 5px; 
+    padding: 1rem;
+    padding-bottom: 0;
+    padding-right: 9rem;
     font-size: 50px;
+    margin-top: 2rem;
     align-self: flex-start;
-    padding-right: 10px;
 }
 
 .PriceRe {
     color: var(--onyx);
-    margin-right: 10%;
+    margin-right: 9rem;
     font-size: 50px;
     align-self: flex-start;
-    padding-right: 10px;
     font-style: bold;
     margin-top: 1.5rem;
 }
