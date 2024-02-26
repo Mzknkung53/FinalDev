@@ -330,7 +330,6 @@ section{
                 .icons{
                     height: fit-content;
                     width: fit-content;
-                    color: var(--onyx);
                     padding-left: 3rem;
                     font-size: 50px;
                     font-style: bold;
@@ -340,16 +339,13 @@ section{
                         padding: 0 0.2rem;
                         color: var(--onyx);
                     }
-                    i:hover::before{
+                    a:active, a:hover{
                         color: var(--falu-red);
                     }
-                    i:active{
-                        color: var(--falu-red);
-                    }
-                    .bi-heart:hover::before{
+                    .bi-heart:hover::before, .bi-heart:active{
                         content: '\F415';
                     }
-                    .bi-cart:hover::before{
+                    .bi-cart:hover::before, .bi-cart:active{
                         content: '\F23D';
                     }
                 }
@@ -406,12 +402,43 @@ section{
             justify-content: space-between;
             margin-bottom: 2rem;
 
-            img {
-                max-width: auto; 
-                max-height: 50vh; 
-                width: auto; 
-                height: auto; 
-                border-radius: 5px; 
+            .item{
+                position: relative;
+
+                img {
+                    max-width: auto; 
+                    max-height: 50vh; 
+                    width: auto; 
+                    height: auto; 
+                    border-radius: 5px; 
+                }
+
+                .icons{
+                    display: flex;
+                    font-size: 3vw;
+                    font-style: bold;
+                    align-self: flex-end;
+                    justify-content: space-between;
+
+                    a{
+                        color: var(--white);
+                        margin: 0 2.5rem;
+                    }
+                    i{
+                        position: absolute;
+                        transform: translate(-50%, -125%);
+                        -ms-transform: translate(-50%, -50%);
+                    }
+                    a:active{
+                        color: var(--white);
+                    }
+                    .bi-heart:hover::before, .bi-heart:active{
+                        content: '\F415';
+                    }
+                    .bi-cart:hover::before, .bi-cart:active{
+                        content: '\F23D';
+                    }
+                } 
             }
         }
 
