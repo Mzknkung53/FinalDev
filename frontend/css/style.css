@@ -336,8 +336,9 @@ section{
                     font-style: bold;
                     align-self: flex-end;
 
-                    i{
+                    a{
                         padding: 0 0.2rem;
+                        color: var(--onyx);
                     }
                     i:hover::before{
                         color: var(--falu-red);
