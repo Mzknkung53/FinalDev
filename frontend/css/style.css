@@ -25,7 +25,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 30vh;
+    height: 15vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,14 +41,11 @@
     padding: 0;
     box-sizing: border-box;
     font-family: BODY;
-
-    
 }
 
 /* header*/
 body{
     background-color: var(--onyx);
-    min-height: 200vh;
 }
 
 .my-custom-site header .logo{
@@ -56,11 +53,11 @@ body{
     left: 50%;
     transform: translateX(-50%);
     font-weight: 700;
-    font-size: clamp(200px, 2.5vh, 32px) !important;
+    font-size: clamp(10vw, 4vw, 2vw) !important;
     text-decoration: none;
     color: var(--white);
     text-decoration: none;
-    font-size: 2em;
+    font-size: 2vw;
     text-transform: uppercase;
     letter-spacing: 2px;
     transform: 0.6s;
@@ -104,7 +101,7 @@ body{
 }
 
 .my-custom-site header.sticky .logo{
-    font-size: clamp(50px, 2.5vh, 32px) !important;
+    font-size: clamp(5vw, 3vw, 2vw) !important;
     color: var(--onyx);
     transition: 0.6s;
 }
@@ -122,7 +119,6 @@ body{
     background-color: var(--white);
     width: 200px;
     padding: 10px;
- 
     transform: translateX(200px);
     transition: transform .5s ease-in-out;
     z-index: 2;
@@ -243,11 +239,15 @@ body{
 
 /* ---------------------------------------------------- */
 #carouselExampleIndicators{
-    max-height: 140vh;
+    height: 100vw;
 
     .carousel-inner{
-        height: 140vh;
+        height: 100vw;
         background-color: var(--onyx);
+    }
+
+    .carousel-indicators{
+        max-height: 100vw;
     }
 }
 
@@ -272,81 +272,109 @@ section{
 
     h1 {
         text-align: left; 
-        padding-left: 45px;
+        padding-left: 0;
         color: var(--white);
-        font-size: 100px;
+        font-size: 6vw;
+
+        @media screen and (max-width: 768px){
+            padding: 0;
+            font-size: 6vw;
+            text-align: center;
+        }
     }
     
     .container-fluid {
         display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
         background-color: var(--white); 
+        width: 100%;
         padding-top: 0;
         border-radius: 10px; 
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         padding: 7rem;
+        font-size: 50px;
+        margin: 0;
+        
+        @media screen and (max-width: 992px){
+            text-align: center;
+        }
 
         img {
-            max-width: auto; 
-            max-height: 50vh; 
-            width: auto; 
-            height: auto; 
-            margin-right: 20px; 
-            border-radius: 5px; 
+            max-width: 10em;
+            max-height: 10em;
+            width: 50vw;
+            height: 50vw;
+            border-radius: 5px;
+            object-fit: cover;
         }
 
         .text-block {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end; 
-            width: fit-content; 
+            display: block;
+            text-align: right;
+            width: 100%; 
 
-            .item-name, .tag, .price {
-                margin: 0;
+            @media screen and (max-width: 992px){
+                text-align: center;
+                flex-direction: column;
+                margin-top: 4.5rem;
+                font-size: 4.5vw;
             }
-            .item-name {
-                font-size: 50px; 
-                font-weight: bold; 
-            }
-            .tag {
+            
+            .item-info {
                 display: flex;
-                align-self: flex-start;
-                background-color: var(--falu-red);
-                color: var(--white);
-                padding: 1rem;
-                padding-bottom: 0;
-                font-size: 50px;
-                margin-top: 2rem;
-            }
-            .price {
-                display: flex;
-                color: var(--onyx);
-                font-size: 50px;
-                font-style: bold;
-                align-self: flex-start;
-                margin-top: 1.5rem;
+                flex-direction: column;
 
-                .icons{
-                    height: fit-content;
-                    width: fit-content;
-                    padding-left: 3rem;
-                    font-size: 50px;
+                .tag {
+                    display: flex;
+                    align-self: flex-end;
+                    background-color: var(--falu-red);
+                    color: var(--white);
+                    font-size: 2rem;
+                    padding: 1rem;
+                    padding-bottom: 0;
+                    width: 7.8em;
+
+                    @media screen and (max-width: 992px){
+                        text-align: center;
+                        flex-direction: column;
+                        align-self: center;
+                        font-size: 1.5rem;
+                        max-width: none;
+                        width: 37vw;
+                    }
+                }
+                .price {
+                    display: flex;
+                    color: var(--onyx);
                     font-style: bold;
                     align-self: flex-end;
+                    margin-top: 1.5rem;
+                    font-size: 2rem;
 
-                    a{
-                        padding: 0 0.2rem;
-                        color: var(--onyx);
+                    @media screen and (max-width: 992px){
+                        align-self: center;
+                        font-size: 4.5vw;
                     }
-                    a:active, a:hover{
-                        color: var(--falu-red);
-                    }
-                    .bi-heart:hover::before, .bi-heart:active{
-                        content: '\F415';
-                    }
-                    .bi-cart:hover::before, .bi-cart:active{
-                        content: '\F23D';
+
+                    .icons{
+                        height: fit-content;
+                        width: fit-content;
+                        padding-left: 2rem;
+                        font-style: bold;
+                        align-self: flex-end;
+
+                        a{
+                            padding: 0 0.2rem;
+                            color: var(--onyx);
+                        }
+                        a:active, a:hover{
+                            color: var(--falu-red);
+                        }
+                        .bi-heart:hover::before, .bi-heart:active{
+                            content: '\F415';
+                        }
+                        .bi-cart:hover::before, .bi-cart:active{
+                            content: '\F23D';
+                        }
                     }
                 }
             }
