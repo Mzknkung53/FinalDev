@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COOC</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link
       rel="stylesheet"
@@ -17,73 +17,93 @@
 </head>
 <body >
   <!-- Top Section -->
-  <section id="top" class="row no-gutters">
-    <div class="col col-sm-12">
-      <div class="my-custom-site" dir="rtl">
-        <header>
-            <a href="index.html" class="logo">COOC</a>
-            <ul>
-                <li id="navToggle" style="cursor: pointer;"><a href="">MENU ≡</a></li>
-                <li><a href="#">SEARCH</a></li>
-                <li><a href="#">SHOPPING CART</a></li>
-                <li><a href="#">WISH LIST</a></li>
+  <section id="top" class="">
+    <div id="nav">
+      <nav class="navbar fixed-top navbar-expand-md bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand d-md-none" href="index.html">COOC</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse mx-auto" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
+              </li>
             </ul>
-        </header>
-        <nav>
-            <button id="navCloseBtn" class="nav-close-btn" href="#">X</button>
-            <ul>
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">PRODUCTS</a></li>
-                <li><a href="#">SHOPPING CART</a></li>
-                <li><a href="#">WISH LIST</a></li>
+            <a class="navbar-brand d-none d-md-block " href="index.html">COOC</a>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a href="wishlist.html"><i class="bi bi-heart"></i></a>
+              </li>
+              <li class="nav-item">
+                <a href="shoppingcart.html"><i class="bi bi-cart"></i></a>
+              </li>
+              <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li> -->
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn" type="submit"><i class="bi bi-search"></i></button>
+              </form>
             </ul>
-        </nav>
-      </div>
-    
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="d-block w-100" src="../assets/images/carousel1.jpg" alt="First slide">
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="../assets/images/carousel2.jpg" alt="Second slide">
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="../assets/images/carousel3.jpg" alt="Third slide">
-            </div>
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-      </div>
+        </div>
+      </nav>
     </div>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="../assets/images/carousel1.jpg" class="d-block w-100" alt="0">
+        </div>
+        <div class="carousel-item">
+          <img src="../assets/images/carousel2.jpg" class="d-block w-100" alt="1">
+        </div>
+        <div class="carousel-item">
+          <img src="../assets/images/carousel3.jpg" class="d-block w-100" alt="2">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    
   </section>
 
   <!-- Recommend Section -->
   <section id="recommend" class="Recommend row no-gutters">
-    <div class="col col-sm-12">
+    <div class="col-sm-12">
       <h1>Recommend</h1>
-      <div id="carouselExample" class="carousel slide" data-ride="carousel">
+      <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="container-fluid row no-gutters">
-              <div class="col col-lg-6 col-md-12"><img src="../assets/images/dark.jpg" alt="Recommended"></div>
-              <div class="text-block col col-lg-6 col-md-12">
-                <div class="col item-text">
+              <div class="col-lg-6 col-md-12"><img src="../assets/images/dark.jpg" alt="Recommended"></div>
+              <div class="text-block col-lg-6 col-md-12">
+                <div class="item-text">
                   <p class="item-name">monochromatic</p>
                   <p class="item-type">T-Shirt</p>
                 </div>
-                <div class="col item-info ">
+                <div class="item-info ">
                   <p class="tag">LIMITED</p>
                   <div class="price">590 THB
                     <div class="icons">
@@ -97,13 +117,13 @@
           </div>
           <div class="carousel-item">
             <div class="container-fluid row no-gutters">
-              <div class="col col-lg-6 col-md-12"><img src="../assets/images/Blackpants.jpg" alt="Recommended"></div>
-              <div class="text-block col col-lg-6 col-md-12">
-                <div class="col item-text">
+              <div class="col-lg-6 col-md-12"><img src="../assets/images/Blackpants.jpg" alt="Recommended"></div>
+              <div class="text-block col-lg-6 col-md-12">
+                <div class="item-text">
                   <p class="item-name">monochromatic</p>
                   <p class="item-type">Trousers</p>
                 </div>
-                <div class="col item-info ">
+                <div class="item-info ">
                   <p class="tag">SALE</p>
                   <div class="price">490 THB
                     <div class="icons">
@@ -117,13 +137,13 @@
           </div>
           <div class="carousel-item">
             <div class="container-fluid row no-gutters">
-              <div class="col col-lg-6 col-md-12"><img src="../assets/images/Shoe.png" alt="Recommended"></div>
-              <div class="text-block col col-lg-6 col-md-12">
-                <div class="col item-text">
+              <div class="col-lg-6 col-md-12"><img src="../assets/images/Shoe.png" alt="Recommended"></div>
+              <div class="text-block col-lg-6 col-md-12">
+                <div class="item-text">
                   <p class="item-name">monochromatic</p>
                   <p class="item-type">Sneakers</p>
                 </div>
-                <div class="col item-info ">
+                <div class="item-info ">
                   <p class="tag">NEW</p>
                   <div class="price">790 THB
                     <div class="icons">
@@ -136,11 +156,11 @@
             </div>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
@@ -150,25 +170,25 @@
 
   <!-- Top-Seller Section -->
   <section id="topSeller" class="Top-Seller row no-gutters">
-    <div class="col col-sm-12">
+    <div class="col-sm-12">
       <h1>Top Seller</h1>
       <div class="container-fluid">
         <div class="img-container row no-gutters">
-          <div class="item col col-lg-4 col-sm-12">
+          <div class="item col-lg-4 col-sm-12">
             <img src="../assets/images/carousel1.jpg" alt="Top-Seller">
             <div class="icons">
               <a href="wishlist.html"><i class="bi bi-heart"></i></a>
               <a href="shoppingcart.html"><i class="bi bi-cart"></i></a>
             </div>
           </div>
-          <div class="item col col-lg-4 col-sm-12">
+          <div class="item col-lg-4 col-sm-12">
             <img src="../assets/images/carousel2.jpg" alt="Top-Seller">
             <div class="icons">
               <a href="wishlist.html"><i class="bi bi-heart"></i></a>
               <a href="shoppingcart.html"><i class="bi bi-cart"></i></a>
             </div>
           </div>
-          <div class="item col col-lg-4 col-sm-12">
+          <div class="item col-lg-4 col-sm-12">
             <img src="../assets/images/carousel3.jpg" alt="Top-Seller">
             <div class="icons">
               <a href="wishlist.html"><i class="bi bi-heart"></i></a>
@@ -180,50 +200,8 @@
       </div> 
     </div>
   </section>
-        
-  <script type="text/javascript">
-    window.addEventListener("scroll", function(){
-      var header = document.querySelector("header");
-        header.classList.toggle("sticky", window.scrollY > 0);
-    })
-        
-    const nav = document.querySelector('nav');
-    const navToggle = document.getElementById('navToggle');
-    const closeBtn = document.querySelector('#navCloseBtn');      
-    const body = document.body;
-    const content = document.querySelector('.my-custom-site'); // Adjust this selector as needed
-    const clickShield = document.createElement('div');
-    clickShield.classList.add('click-shield');
-    document.body.appendChild(clickShield); // Append click-shield to the body
 
-    const toggleScrolling = (isNavActive) => {
-      if (isNavActive) {
-        document.body.style.overflow = 'hidden';
-        document.documentElement.style.overflow = 'hidden'; // For broader compatibility
-      } else {
-        document.body.style.overflow = '';
-        document.documentElement.style.overflow = '';
-      }
-    };
-
-    navToggle.addEventListener('click', (event) => {
-        event.preventDefault(); // Prevent default anchor action
-        const isActive = nav.classList.toggle('active');
-        body.classList.toggle('no-scroll', isActive);
-        content.classList.toggle('content-blur', isActive);
-        clickShield.style.display = isActive ? 'block' : 'none';
-        toggleScrolling(isActive);
-    });
-    closeBtn.addEventListener('click', () => {
-        nav.classList.remove('active');
-        toggleScrolling(false);
-        body.classList.remove('no-scroll');
-        content.classList.remove('content-blur'); // Remove blur effect
-        clickShield.style.display = 'none'; // Hide click-shield
-    });
-  </script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

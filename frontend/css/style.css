@@ -20,22 +20,6 @@
     --falu-red: #712121FF;
 }
 
-.my-custom-site header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 15vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 40px 100px;
-    z-index: 1000; /* Ensure this is higher than the carousel's z-index */
-    background: transparent; /* or any color, ensuring the header is not transparent */
-    transition: 0.6s;
-}
-
-
 *{
     margin: 0;
     padding: 0;
@@ -46,195 +30,6 @@
 /* header*/
 body{
     background-color: var(--onyx);
-}
-
-.my-custom-site header .logo{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-weight: 700;
-    font-size: clamp(10vw, 4vw, 2vw) !important;
-    text-decoration: none;
-    color: var(--white);
-    text-decoration: none;
-    font-size: 2vw;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transform: 0.6s;
-    font-family: LOGO;
-}
-
-.my-custom-site header ul{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.my-custom-site header ul li{
-    position: relative;
-    list-style: none;
-}
-
-.my-custom-site header ul li a{
-    position: relative;
-    margin: 0 15px;
-    text-decoration: none;
-    color: var(--white);
-    letter-spacing: 2px;
-    font-weight: 500px;
-    transition: 0.6s;
-}
-
-.my-custom-site header.sticky{
-    padding: 5 100px;
-    background-color: var(--white);
-    height: 10%;
-}
-
-.my-custom-site header ul li:not(#navToggle) {
-    display: none;
-}
-
-.my-custom-site header.sticky ul li:not(#navToggle) {
-    display: block;
-}
-
-.my-custom-site header.sticky .logo{
-    font-size: clamp(5vw, 3vw, 2vw) !important;
-    color: var(--onyx);
-    transition: 0.6s;
-}
-
-.my-custom-site header.sticky ul li a {
-    color: var(--onyx); /* Change text color to black */
-}
-
-
-/*nav bar*/
-.my-custom-site nav{
-    position: fixed;
-    display: none;
-    height: 100vh;
-    background-color: var(--white);
-    width: 200px;
-    padding: 10px;
-    transform: translateX(200px);
-    transition: transform .5s ease-in-out;
-    z-index: 2;
-}
-
-.my-custom-site nav.active {
-    position: fixed; /* Use fixed to keep it in view */
-    right: 0; /* Align to the right side of the viewport */
-    top: 0;
-    width: 20%; /* Or whatever width you prefer */
-    height: 100vh; /* Full viewport height */
-    z-index: 1050; /* Above other content */
-    display: block; /* Show the nav */
-    transform: 0.6s; /* Remove transform if not needed for animation */
-}
- 
-.my-custom-site nav .logo{
-    margin: 10px 0 20px;
-}
- 
-.my-custom-site nav .logo a{
-    font-size: 22px;
-    color: var(--white);
-    padding: 10px;
-   
-    font-weight: 700;
-   
-    display: flex;
-    align-items: center;
-    transition: .3s ease;
-}
- 
-.my-custom-site nav .logo a:hover{
-    padding-right: 20px;
-}
- 
-.my-custom-site nav .logo a i {
-    font-size: 27px;
-    margin-right: 10px;
-    transition: .5s ease-in-out;
-}
- 
-.my-custom-site nav .logo a:hover i {
-    transform: rotate(180deg);
-}
-
-.my-custom-site nav ul {
-    position: relative;
-}
- 
-.my-custom-site nav ul li {
-    padding: 10px;
-    font-weight: 500;
-}
- 
-.my-custom-site nav ul li a{
-    color: var(--onyx);
-    transition: all .5s ease;
-}
-
-.my-custom-site nav ul li a:hover{
-    background-color: var(--falu-red);
-    color: var(--white);
-    display: block;
-    padding-right: 10px;
-}
- 
-.my-custom-site button{
-    cursor: pointer;
-    border: 1px solid var(--white);    
-    color:var(--white);
-    background-color: var(--falu-red);
-    padding: 3px 5px;
-    border-radius: 3px;
- 
-    position: fixed;
-    top: 10px;
-    right: 10px;
- 
-    transform: translateX(0);
-    transition: background-color .3s ease, transform .47s ease-in-out;
-}
- 
-.my-custom-site button:hover{
-    background-color: var(--falu-red);
-    color:var(--white);
-}
- 
-.my-custom-site button.active{
-    transform: translateX(-200px);
-}
-
-.my-custom-site .nav-close-btn {
-    position: relative;
-    top: 10px;
-    right: 10px;
-    margin-bottom: 20px;
-    border: none;
-    background: none;
-    color: var(--onyx);
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.content-blur > *:not(nav):not(header) {
-    filter: blur(5px);
-}
-
-.click-shield {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1045; /* Just below the nav bar */
-    display: none;
 }
 
 /* ---------------------------------------------------- */
@@ -257,6 +52,23 @@ section{
 
 #top{
     padding-bottom: 0;
+}
+
+/* NavBar */
+#nav{
+    color: var(--onyx);
+    background-color: var(--falu-red);
+
+    .navbar-nav{
+        align-items: center;
+        
+    }
+    
+    .navbar-brand{
+        font-family: LOGO;
+        font-size: 4em;
+        color: var(--onyx);
+    }
 }
 
 /* ---------------------------------------------------- */
@@ -308,6 +120,7 @@ section{
         }
 
         .text-block {
+            justify-content: left;
             display: block;
             text-align: right;
             width: 100%; 
@@ -383,17 +196,17 @@ section{
 }
 
 #carouselExample{
-    a{
+    .carousel-control-prev, .carousel-control-next{
         margin-top: auto;
         margin-bottom: auto;
         width: 6.5rem;
-        height: rem;
+        height: 7rem;
     }
     .carousel-control-prev-icon {
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23712121FF' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23712121FF' class='bi bi-chevron-left' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0'/%3E%3C/svg%3E");
     }
     .carousel-control-next-icon {
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23712121FF' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23712121FF' class='bi bi-chevron-right' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708'/%3E%3C/svg%3E");
     }
 }
 
