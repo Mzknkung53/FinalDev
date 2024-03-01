@@ -38,6 +38,7 @@
         }
     }
     
+    
     .container-fluid {
         align-items: center;
         justify-content: center;
@@ -57,6 +58,7 @@
 
             .item{
                 position: relative;
+                padding: 10px;
 
                 @media screen and (max-width: 992px){
                     margin-bottom: 15vw;
@@ -70,13 +72,13 @@
                     width: 20vw;
                     height: 28vw;
                     border-radius: 5px;
-                    object-fit: cover;
+                    object-fit:scale-down;
 
-                    @media screen and (max-width: 992px){
-                        max-width: none;
-                        max-height: none;
-                        width: 20vw;
-                        height: 10vw;
+                    @media (min-width: 992px) { /* Adjusts for large screens */
+                        .Product-list .img-container .item {
+                          flex: 0 0 auto;
+                          width: 20%; /* Forces 5 items per row */
+                        }
                     }
                 }
 
