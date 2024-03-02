@@ -54,15 +54,23 @@ section{
     padding-bottom: 0;
 }
 
+
+
 /* NavBar */
 #nav{
     color: var(--onyx);
     background-color: var(--falu-red);
+    
 
-    .navbar-nav{
+    .navbar-nav {
+        /* flex-flow: row nowrap; */
         align-items: center;
-        
     }
+      
+    /* .navbar {
+        flex-flow: row nowrap;
+        display: inline-flex;
+    } */
     
     .navbar-brand{
         font-family: LOGO;
@@ -70,6 +78,8 @@ section{
         color: var(--onyx);
     }
 }
+
+
 
 /* ---------------------------------------------------- */
 #recommend{
@@ -88,7 +98,7 @@ section{
         color: var(--white);
         font-size: 6vw;
 
-        @media screen and (max-width: 768px){
+        @media screen and (max-width: 991px){
             padding: 0;
             font-size: 6vw;
             text-align: center;
@@ -106,7 +116,7 @@ section{
         font-size: 50px;
         margin: 0;
         
-        @media screen and (max-width: 992px){
+        @media screen and (max-width: 991px){
             text-align: center;
         }
 
@@ -123,9 +133,8 @@ section{
             justify-content: left;
             display: block;
             text-align: right;
-            width: 100%; 
 
-            @media screen and (max-width: 992px){
+            @media screen and (max-width: 991px){
                 text-align: center;
                 flex-direction: column;
                 margin-top: 4.5rem;
@@ -146,7 +155,7 @@ section{
                     padding-bottom: 0;
                     width: 7.8em;
 
-                    @media screen and (max-width: 992px){
+                    @media screen and (max-width: 991px){
                         text-align: center;
                         flex-direction: column;
                         align-self: center;
@@ -163,7 +172,7 @@ section{
                     margin-top: 1.5rem;
                     font-size: 2rem;
 
-                    @media screen and (max-width: 992px){
+                    @media screen and (max-width: 991px){
                         align-self: center;
                         font-size: 4.5vw;
                     }
@@ -225,7 +234,7 @@ section{
         color: var(--white);
         font-size: 6vw;
 
-        @media screen and (max-width: 768px){
+        @media screen and (max-width: 991px){
             padding: 0;
             font-size: 6vw;
             text-align: center;
@@ -252,7 +261,7 @@ section{
             .item{
                 position: relative;
 
-                @media screen and (max-width: 992px){
+                @media screen and (max-width: 991px){
                     margin-bottom: 15vw;
                 }
 
@@ -266,7 +275,7 @@ section{
                     border-radius: 5px;
                     object-fit: cover;
 
-                    @media screen and (max-width: 992px){
+                    @media screen and (max-width: 991px){
                         max-width: none;
                         max-height: none;
                         width: 50vw;
@@ -280,7 +289,7 @@ section{
                     font-size: 2.5rem;
                     margin-top: -1.5em;
 
-                    @media screen and (max-width: 992px){
+                    @media screen and (max-width: 991px){
                         font-size: 5vw;
                         margin-top: -1.5em;
                     }
@@ -290,7 +299,7 @@ section{
                         display: table-cell;
                         color: var(--white);
 
-                        @media screen and (max-width: 992px){
+                        @media screen and (max-width: 991px){
                             padding: 0 15vw;
 
                         }
