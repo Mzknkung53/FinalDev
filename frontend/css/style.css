@@ -52,31 +52,90 @@ section{
 
 #top{
     padding-bottom: 0;
+
+    .menu-toggle{
+        border:none;
+        outline: none;
+    }
+    
 }
 
-
+button:focus {outline:0;}
 
 /* NavBar */
 #nav{
     color: var(--onyx);
     background-color: var(--falu-red);
+
+    
+    .container-fluid{
+        @media screen and (max-width: 991px){
+            margin: 0 5vw;
+        }     
+    }
     
 
     .navbar-nav {
-        /* flex-flow: row nowrap; */
-        align-items: center;
+        /* align-items: center; */
+        /* width: auto; */
     }
       
-    /* .navbar {
-        flex-flow: row nowrap;
-        display: inline-flex;
-    } */
-    
     .navbar-brand{
         font-family: LOGO;
-        font-size: 4em;
+        font-size: 3em;
         color: var(--onyx);
+        padding: 0;
+        margin: 0;
+
+        
     }
+}
+#navbar-menu{
+    display: block;
+    position: fixed;
+    z-index: 3;
+    justify-content: right;
+}
+
+body.modal-open #backdrop{
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+}
+
+.modal .modal-dialog {
+	position:fixed;
+	right: 0;
+	margin: auto;
+	width: 320px;
+	height: 100%;
+	-webkit-transform: translate3d(0%, 0, 0);
+	-ms-transform: translate3d(0%, 0, 0);
+	-o-transform: translate3d(0%, 0, 0);
+	transform: translate3d(0%, 0, 0);
+}
+
+.modal .modal-content {
+    overflow-y: auto;
+	height: 100%;
+    border-radius: 0;
+    background-color: var(--white);
+
+    .modal-body{
+        a{
+            color: var(--onyx);
+        }
+        a:hover{
+            background-color: var(--falu-red);
+            color: var(--white);
+        }
+    }
+    
+    
+}
+
+.container .btn{
+    font-size: 2rem;
+    color: var(--silver);
 }
 
 
