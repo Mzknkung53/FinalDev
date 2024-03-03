@@ -89,7 +89,7 @@ body.modal-open #main{
                 color: var(--white);
             }
             .navbar-brand{
-                opacity: 0; 
+                opacity: 0;
                 font-family: LOGO;
                 font-size: 3em;
                 padding: 0;
@@ -121,6 +121,35 @@ body.modal-open #main{
     position: fixed;
     z-index: 3;
     justify-content: right;
+}
+.logo{
+    position: fixed;
+    height: fit-content;
+    text-align: center;
+    margin: 0.5rem 0;
+    width: 100vw;
+    z-index: 5000;
+    margin-bottom: 0;
+
+    a{
+        text-decoration: none;
+        color: var(--white);
+        font-family: LOGO;
+        font-size: 12em;
+    }
+}
+.animated{
+    @media screen and (max-width: 991px){
+        text-align: left;
+        margin: 0.5rem 5vw;
+        padding: 0 0.75rem;
+    }
+    a{
+        transition: all ease 0.3s;
+        color: var(--onyx);
+        opacity: 0;
+        font-size: 3em;
+    }
 }
 
 
