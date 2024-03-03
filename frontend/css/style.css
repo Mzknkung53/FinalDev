@@ -20,20 +20,98 @@
     --falu-red: #712121FF;
 }
 
+/* General */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: BODY;
 }
-
-/* header*/
 body{
     background-color: var(--onyx);
+    section{
+        padding-bottom: 3rem;
+    }
 }
 
-/* ---------------------------------------------------- */
-#carouselExampleIndicators{
+
+/* Modal (Side Menu) */
+body.modal-open #main{
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+}
+.modal {
+    .modal-dialog{
+        position:fixed;
+        right: 0;
+        margin: auto;
+        width: 320px;
+        height: 100%;
+        -webkit-transform: translate3d(0%, 0, 0);
+        -ms-transform: translate3d(0%, 0, 0);
+        -o-transform: translate3d(0%, 0, 0);
+        transform: translate3d(0%, 0, 0);  
+    }
+
+    .modal-content {
+        overflow-y: auto;
+        height: 100%;
+        border-radius: 0;
+        background-color: var(--white);
+    
+        .modal-body{
+            a{
+                color: var(--onyx);
+            }
+            a:hover{
+                background-color: var(--falu-red);
+                color: var(--white);
+            }
+        }
+    }
+}
+.container .btn{
+    font-size: 2rem;
+    color: var(--silver);
+}
+
+
+/* NavBar */
+#nav{
+    color: var(--onyx);
+    background-color: var(--falu-red);
+
+    
+    .container-fluid{
+        margin: 0 5vw;    
+    }
+      
+    .navbar-brand{
+        font-family: LOGO;
+        font-size: 3em;
+        color: var(--onyx);
+        padding: 0;
+        margin: 0;
+    }
+}
+#navbar-menu{
+    display: block;
+    position: fixed;
+    z-index: 3;
+    justify-content: right;
+}
+
+
+/* Top Section / Carousel */
+#top{
+    padding-bottom: 0;
+
+    .menu-toggle{
+        border:none;
+        outline: none;
+    }
+}
+#top-carousel{
     height: 100vw;
 
     .carousel-inner{
@@ -46,101 +124,8 @@ body{
     }
 }
 
-section{
-    padding-bottom: 3rem;
-}
 
-#top{
-    padding-bottom: 0;
-
-    .menu-toggle{
-        border:none;
-        outline: none;
-    }
-    
-}
-
-button:focus {outline:0;}
-
-/* NavBar */
-#nav{
-    color: var(--onyx);
-    background-color: var(--falu-red);
-
-    
-    .container-fluid{
-        @media screen and (max-width: 991px){
-            margin: 0 5vw;
-        }     
-    }
-    
-
-    .navbar-nav {
-        /* align-items: center; */
-        /* width: auto; */
-    }
-      
-    .navbar-brand{
-        font-family: LOGO;
-        font-size: 3em;
-        color: var(--onyx);
-        padding: 0;
-        margin: 0;
-
-        
-    }
-}
-#navbar-menu{
-    display: block;
-    position: fixed;
-    z-index: 3;
-    justify-content: right;
-}
-
-body.modal-open #backdrop{
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
-}
-
-.modal .modal-dialog {
-	position:fixed;
-	right: 0;
-	margin: auto;
-	width: 320px;
-	height: 100%;
-	-webkit-transform: translate3d(0%, 0, 0);
-	-ms-transform: translate3d(0%, 0, 0);
-	-o-transform: translate3d(0%, 0, 0);
-	transform: translate3d(0%, 0, 0);
-}
-
-.modal .modal-content {
-    overflow-y: auto;
-	height: 100%;
-    border-radius: 0;
-    background-color: var(--white);
-
-    .modal-body{
-        a{
-            color: var(--onyx);
-        }
-        a:hover{
-            background-color: var(--falu-red);
-            color: var(--white);
-        }
-    }
-    
-    
-}
-
-.container .btn{
-    font-size: 2rem;
-    color: var(--silver);
-}
-
-
-
-/* ---------------------------------------------------- */
+/* Recommend Section */
 #recommend{
     padding-top: 3rem;
 }
@@ -262,8 +247,7 @@ body.modal-open #backdrop{
         }
     }
 }
-
-#carouselExample{
+#recommend-carousel{
     .carousel-control-prev, .carousel-control-next{
         margin-top: auto;
         margin-bottom: auto;
@@ -279,7 +263,7 @@ body.modal-open #backdrop{
 }
 
 
-/* ---------------------------------------------------- */
+/* Top-Seller Section */
 .Top-Seller {
     padding-top: 0;
     padding-left: 20px; 
@@ -399,7 +383,8 @@ body.modal-open #backdrop{
     }
 }
 
-/*----------------------------------------------------------------*/
+
+/* Login Page*/
 #login{
     display: flex;
     justify-content: center;
