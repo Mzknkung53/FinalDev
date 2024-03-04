@@ -19,6 +19,123 @@
     --white: #EBEBEB;
     --falu-red: #712121FF;
 }
+
+/* Modal (Side Menu) */
+body.modal-open #main{
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    transition: all ease 0.4s;
+}
+.modal {
+    .modal-dialog{
+        position:fixed;
+        right: 0;
+        margin: auto;
+        width: 320px;
+        height: 100%;
+        -webkit-transform: translate3d(0%, 0, 0);
+        -ms-transform: translate3d(0%, 0, 0);
+        -o-transform: translate3d(0%, 0, 0);
+        transform: translate3d(0%, 0, 0);  
+    }
+
+    .modal-content {
+        overflow-y: auto;
+        height: 100%;
+        border-radius: 0;
+        background-color: var(--white);
+    
+        .modal-body{
+            a{
+                color: var(--onyx);
+            }
+            a:hover{
+                background-color: var(--falu-red);
+                color: var(--white);
+            }
+        }
+    }
+}
+.container .btn{
+    font-size: 2rem;
+    color: var(--silver);
+}
+
+
+/* NavBar */
+#nav{
+    .navbar{
+        transition: all ease 0.5s;
+
+        .container-fluid{
+            margin: 0 5vw;
+    
+            a,button{
+                color: var(--white);
+            }
+            .navbar-brand{
+                opacity: 0;
+                font-family: LOGO;
+                font-size: 3em;
+                padding: 0;
+                margin: 0;
+                margin-right: 1.5rem;
+            }
+            .navbar-element{
+                font-style: normal;
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+    .white {
+        background-color: var(--white);
+
+        .container-fluid{
+            .navbar-brand{
+                opacity: 1;
+            }
+            a,button{
+                color: var(--onyx);
+            }    
+        }
+    }
+}
+#navbar-menu{
+    display: block;
+    position: fixed;
+    z-index: 3;
+    justify-content: right;
+}
+.logo{
+    position: fixed;
+    height: fit-content;
+    text-align: center;
+    margin: 0.5rem 0;
+    width: 100vw;
+    margin-bottom: 0;
+
+    a{
+        text-decoration: none;
+        color: var(--white);
+        font-family: LOGO;
+        font-size: 12em;
+    }
+}
+.animated{
+    @media screen and (max-width: 991px){
+        text-align: left;
+        margin: 0.5rem 5vw;
+        padding: 0 0.75rem;
+    }
+    a{
+        transition: all ease 0.3s;
+        color: var(--onyx);
+        opacity: 1;
+        font-size: 3em;
+    }
+}
+
 /*----------------------------------------------------------------*/
 .Product-list{
     margin: 5px;
