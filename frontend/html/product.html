@@ -71,6 +71,8 @@
         </div>
       </nav>
     </div>
+ </div>
+
     <section id="product_list" class="Product-list row no-gutters">
       <div class="col col-sm-12">
         <h1>Product</h1>
@@ -200,24 +202,15 @@
         </div> 
       </div>
     </section>
-
     <!-- Script -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       console.log("JS is working!");
+      $('.navbar').addClass('white');
+      $('.logo').addClass('animated');
       
       $(".nav-item").click(function(){
         $("#menu").modal('hide');
-      });
-
-      $(window).scroll(function(){
-        if ($(this).scrollTop() > 0) {
-          $('.navbar').addClass('white');
-          $('.logo').addClass('animated');
-        } else {
-          $('.navbar').removeClass('white');
-          $('.logo').removeClass('animated');
-        }
       });
     });
   </script>
