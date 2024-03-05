@@ -209,19 +209,11 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       console.log("JS is working!");
+      $('.navbar').addClass('white');
+      $('.logo').addClass('animated');
       
       $(".nav-item").click(function(){
         $("#menu").modal('hide');
-      });
-
-      $(window).scroll(function(){
-        if ($(this).scrollTop() > 1) {
-          $('.navbar').addClass('white');
-          $('.logo').addClass('animated');
-        } else {
-          $('.navbar').removeClass('white');
-          $('.logo').removeClass('animated');
-        }
       });
     });
   </script>
