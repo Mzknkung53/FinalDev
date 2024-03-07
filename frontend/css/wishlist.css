@@ -20,6 +20,22 @@
     --falu-red: #712121FF;
 }
 
+
+/* General */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: BODY;
+}
+body{
+    background-color: var(--onyx);
+    section{
+        padding-bottom: 3rem;
+    }
+}
+
+
 /* Modal (Side Menu) */
 body.modal-open #main{
     filter: blur(5px);
@@ -245,6 +261,73 @@ body.modal-open #main{
         button.btn.active{
             background-color: var(--falu-red);
             color: var(--white);
+        }
+    }
+}
+
+/* Login Page*/
+#login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+    background-position: center;
+    background-image: url("../assets/images/LoginBG.png");
+    height: 100vh;
+    width: 100vw;
+
+    .container{
+        background-color: var(--white);
+        border-radius: 1vw;
+        height: 60vh;
+        width: 60vw;
+        font-size: 2rem;
+        margin-top: 17vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    
+        /* Form */
+        form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            
+    
+            /* Text Input */
+            input{
+                width: 60%;
+                height: 5vh;
+                margin: 1vh 0;
+                margin-bottom: 2vh;
+                padding: 1vh;
+                border: none;
+                border-radius: 0.5vw;
+                font-family: 'Helvetica', sans-serif;
+                font-size: 2.5vh;
+                color: var(--onyx);
+            }
+    
+            input[type=password]{
+                margin-bottom: 5vh;
+            }
+    
+            /* Submit Button */
+            .btn{
+                width: 25%;
+                margin: 1vh 0;
+                padding: 1vh;
+                border: none;
+                border-radius: 1vw;
+                font-family: 'Helvetica', sans-serif;
+                font-size: 3vh;
+                color: var(--white);
+                background-color: var(--falu-red);
+                cursor: pointer;
+            }
         }
     }
 }
