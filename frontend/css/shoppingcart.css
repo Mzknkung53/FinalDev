@@ -1,3 +1,9 @@
+
+.navbar, #secondNav {
+    background-color: var(--silver);
+}
+
+
 .editnav {
     background-color: var(--silver);
     width: 100%;
