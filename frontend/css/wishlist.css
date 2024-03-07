@@ -12,30 +12,6 @@
     src: url("../assets/fonts/body.otf") format("opentype");
 }
 
-/* Color palette */
-:root{
-    --onyx: #3D3D3DFF;
-    --silver: #9C9C9C;
-    --white: #EBEBEB;
-    --falu-red: #712121FF;
-}
-
-
-/* General */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: BODY;
-}
-body{
-    background-color: var(--onyx);
-    section{
-        padding-bottom: 3rem;
-    }
-}
-
-
 /* Modal (Side Menu) */
 body.modal-open #main{
     filter: blur(5px);
@@ -79,6 +55,31 @@ body.modal-open #main{
 
 
 /* NavBar */
+.navbar, #secondNav {  /* for second navbar */
+    background-color: var(--silver);
+}
+
+.editnav {  /* for second navbar */
+    background-color: var(--silver);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+
+    h1 {
+        order: 1;
+        padding-top: 12px;
+    }
+
+    .navbar-toggler {
+        order: 0;
+        padding-left: 0%;
+        position: fixed;
+        left: 3%;
+    }
+}
+
+
 #nav{
     .navbar{
         transition: all ease 0.5s;
@@ -153,7 +154,7 @@ body.modal-open #main{
     background-color: var(--onyx);
     padding-left: 20px; 
     padding-right: 20px; 
-    padding-top: 15vh;
+    padding-top: 23vh;
     
     h1 {
         text-align: left; 
@@ -173,10 +174,10 @@ body.modal-open #main{
         align-items: center;
         justify-content: center;
         background-color: var(--white);
-        padding-top: 0;
+        padding-top: 5vh;
         border-radius: 10px; 
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        padding: 3rem;
+        padding: 4rem;
 
         @media screen and (max-width: 991px){
             padding: 5vw;
