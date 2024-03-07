@@ -131,11 +131,12 @@ body.modal-open #main{
 
 
 /*----------------------------------------------------------------*/
-.Product-list{
+.wishList{
     margin: 5px;
     color: var(--onyx);
     background-color: var(--onyx);
-    padding: 5vh;
+    padding-left: 20px; 
+    padding-right: 20px; 
     padding-top: 15vh;
     
     h1 {
@@ -144,7 +145,7 @@ body.modal-open #main{
         color: var(--white);
         font-size: 6vw;
 
-        @media screen and (max-width: 768px){
+        @media screen and (max-width: 991px){
             padding: 0;
             font-size: 6vw;
             text-align: center;
@@ -155,79 +156,74 @@ body.modal-open #main{
     .container-fluid {
         align-items: center;
         justify-content: center;
-        text-align: center;
         background-color: var(--white);
         padding-top: 0;
         border-radius: 10px; 
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        padding: 7rem;
-        padding-bottom: 4rem;
+        padding: 3rem;
+
+        @media screen and (max-width: 991px){
+            padding: 5vw;
+        }
     
-        .img-container {
+        .item-container {
             display: flex;
             flex-direction: inherit;
             justify-content: space-between;
-            margin-bottom: 2rem;
+
+            .header{
+                display: flex;
+                flex: wrap;
+                justify-content: space-between;
+                padding: 0 8.2rem;
+            }
 
             .item{
+                display: flex;
+                flex: wrap;
+                align-items: center;
                 position: relative;
-                padding: 10px;
-                margin: 10px;
-
-                @media screen and (max-width: 992px){
-                    margin-bottom: 15vw;
-                }
 
                 img {
-                    min-width: 15em;
-                    min-height: 21em;
-                    max-width: 20em;
-                    max-height: 28em;
-                    width: 20vw;
-                    height: 28vw;
+                    min-width: 7.5em;
+                    min-height: 10.5em;
+                    width: 10em;
+                    height: 14em;
                     border-radius: 5px;
-                    object-fit:scale-down;
+                    object-fit:cover;
 
-                    @media (min-width: 992px) { /* Adjusts for large screens */
-                        .Product-list .img-container .item {
-                          flex: 0 0 auto;
-                          width: 20%; /* Forces 5 items per row */
-                        }
+                    @media (max-width: 991px) {
+                        width: 20vw;
+                        height: 28vw;
                     }
                 }
 
-                .icons{
-                    display: flex;
-                    justify-content: center;
+                .btn{
+                    padding: 0;
+                    padding-right: 3rem;
+                    margin: 0;
+                    height: auto;
+                    width: auto;
+                    background: none;
                     font-size: 2.5rem;
-                    margin-top: -1.5em;
+                    color: var(--onyx);
+                }
+                .bi-trash3:hover::before, .bi-trash3:active{
+                    content: '\F78A';
+                        
+                }
 
-                    @media screen and (max-width: 992px){
-                        font-size: 5vw;
-                        margin-top: -1.5em;
-                    }
+                .item-info{
+                    display: flex;
+                    flex: wrap;
+                    align-items: center;
+                    justify-content: space-between;
 
-                    a{
-                        padding: 0 5vw;
-                        display: table-cell;
-                        color: var(--white);
-
-                        @media screen and (max-width: 992px){
-                            padding: 0 15vw;
-
-                        }
-
+                    h2{
+                        padding: 0 50vw;
+                        margin: 0;
                     }
-                    a:active{
-                        color: var(--white);
-                    }
-                    .bi-heart:hover::before, .bi-heart:active{
-                        content: '\F415';
-                    }
-                    .bi-cart:hover::before, .bi-cart:active{
-                        content: '\F23D';
-                    }
-                } 
+                }
             }
         }
 

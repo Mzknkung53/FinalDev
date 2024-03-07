@@ -132,6 +132,7 @@ body.modal-open #main{
 
     a{
         text-decoration: none;
+        text-shadow: 0 0 0.5rem rgba(0,0,0,0.7);
         color: var(--white);
         font-family: LOGO;
         font-size: 12em;
@@ -145,6 +146,7 @@ body.modal-open #main{
     }
     a{
         transition: all ease 0.3s;
+        text-shadow: none;
         color: var(--onyx);
         opacity: 1;
         font-size: 3em;
