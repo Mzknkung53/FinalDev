@@ -4,9 +4,17 @@
     display: flex;
     justify-content: center;
     align-items: center;   
-    
-    h1{
+
+    h1 {
+        order: 1;
         padding-top: 12px;
+    }
+
+    .navbar-toggler {
+        order: 0;
+        padding-left: 0%;
+        position: fixed;
+        left: 3%;
     }
 }
 
@@ -14,11 +22,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding-top: 16vh;
-    width: 100%; /* Add this line to set the width to 100% */
-}
+    padding-top: 14vh;
 
-    
 
     .row_fix{
         width: 100%;
