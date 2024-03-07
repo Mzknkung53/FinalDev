@@ -83,7 +83,7 @@ body.modal-open #main{
         transition: all ease 0.5s;
 
         .container-fluid{
-            margin: 0 0.5vw;
+            margin: 0 ;
     
             a,button{
                 color: var(--white);
