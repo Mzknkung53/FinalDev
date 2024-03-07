@@ -1,10 +1,24 @@
-
+.editnav {
+    background-color: var(--silver);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    
+    h1{
+        padding-top: 12px;
+    }
+}
 
 #item-list{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding-top: 12vh;
+    padding-top: 16vh;
+    width: 100%; /* Add this line to set the width to 100% */
+}
+
+    
 
     .row_fix{
         width: 100%;
@@ -78,4 +92,7 @@
         background-color: var(--silver);
         width: 100%;
     }
+}
+h2 {
+    text-align: center;
 }
