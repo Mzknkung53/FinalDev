@@ -94,8 +94,6 @@ body{
             color: var(--onyx);
             background-color: var(--silver);
             cursor: pointer;
-
-            
         }
         button.btn:hover{
             background-color: var(--onyx);
