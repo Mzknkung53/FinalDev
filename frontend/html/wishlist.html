@@ -88,29 +88,36 @@
       </nav>
     </div>
 
-    <!-- Wishlist Section -->
-    <section id="wishlist" class="wishList row no-gutters">
-      <div class="col col-sm-12">
-        <div class="container-fluid">
-          <div class="item-container row">
-            <div class="header d-none d-lg-flex">
-              <h5>Name</h5>
-              <h5>Price</h5>
-              <h5>Stock Status</h5>
-            </div>
-            <div class="item col col-12">
-              <button class="btn d-none d-lg-inline"><i class="bi bi-trash3"></i></button>
-              <img src="../assets/images/carousel1.jpg" alt="Top-Seller">
-
-              <h2>590 THB</h2>
-              <h2>In Stock</h2>
-
-            </div>
-          </div>
-        </div>
+    <section id="wishlist" class="wishList">
+      <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Model</th>
+              <th scope="col">Price</th>
+              <th scope="col">Stock Status</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Black suit</td>
+              <td>
+                <img src="../assets/images/carousel1.jpg" alt="Top-Seller" style="width: 100px; height: auto;">
+              </td>
+              <td>590 THB</td>
+              <td>In Stock</td>
+              <td>
+                <button class="btn item-action"><i class="bi bi-trash3"></i></button>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
       </div>
     </section>
-  </div>
+    
 
   <!-- Script -->
   <script>

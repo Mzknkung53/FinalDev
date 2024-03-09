@@ -12,12 +12,16 @@
     src: url("../assets/fonts/body.otf") format("opentype");
 }
 
-/* Modal (Side Menu) */
+body{
+    background-color: var(--onyx);
+}
+
 body.modal-open #main{
     filter: blur(5px);
     -webkit-filter: blur(5px);
     transition: all ease 0.4s;
 }
+  
 .modal {
     .modal-dialog{
         position:fixed;
@@ -54,12 +58,12 @@ body.modal-open #main{
 }
 
 
-/* NavBar */
-.navbar, #secondNav {  /* for second navbar */
+
+.navbar, #secondNav {  
     background-color: var(--silver);
 }
 
-.editnav {  /* for second navbar */
+.editnav {  
     background-color: var(--silver);
     width: 100%;
     display: flex;
@@ -289,7 +293,6 @@ body.modal-open #main{
         align-items: center;
         flex-direction: column;
     
-        /* Form */
         form{
             display: flex;
             flex-direction: column;
@@ -298,7 +301,6 @@ body.modal-open #main{
             width: 100%;
             
     
-            /* Text Input */
             input{
                 width: 60%;
                 height: 5vh;
@@ -316,7 +318,6 @@ body.modal-open #main{
                 margin-bottom: 5vh;
             }
     
-            /* Submit Button */
             .btn{
                 width: 25%;
                 margin: 1vh 0;
@@ -332,3 +333,30 @@ body.modal-open #main{
         }
     }
 }
+
+
+.wishList .table {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .wishList th, .wishList td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .wishList img {
+    width: auto;
+    height: 100px; 
+  }
+  
+  .wishList .btn.item-action {
+    font-size: 1.5rem;
+    color: var(--onyx);
+    background: none;
+  }
+  
+  .wishList .btn.item-action:hover {
+    color: var(--falu-red);
+  }
+  
