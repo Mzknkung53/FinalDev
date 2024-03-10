@@ -69,7 +69,7 @@ body.modal-open #main{
         padding: 0;
 
         .container-fluid{
-            margin: 0 5vw;
+            margin: 0;
     
             a,button{
                 color: var(--white);
@@ -129,6 +129,31 @@ body.modal-open #main{
     justify-content: right;
 }
 
+.navbar, #secondNav {
+    background-color: var(--silver);
+}
+
+
+.editnav {
+    background-color: var(--silver);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+
+    h1 {
+        order: 1;
+        padding-top: 12px;
+    }
+
+    .navbar-toggler {
+        order: 0;
+        padding-left: 0%;
+        position: fixed;
+        left: 3%;
+    }
+}
+
 
 /*----------------------------------------------------------------*/
 .Product-list{
@@ -136,7 +161,7 @@ body.modal-open #main{
     color: var(--onyx);
     background-color: var(--onyx);
     padding: 5vh;
-    padding-top: 15vh;
+    padding-top: 20vh;
     
     h1 {
         text-align: left; 
