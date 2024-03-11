@@ -8,16 +8,17 @@ app.use(bodyParser.json());
 
 app.use(express.static('public'));
 
-const db = mysql.createConnection({
-    host: "127.0.0.1",
-    user: "root",
-    password: "Ned0930519556",
-    database: "backoffice"
-});
+
+// const db = mysql.createConnection({
+//     host: "127.0.0.1",
+//     user: "root",
+//     password: "Ned0930519556",
+//     database: "backoffice"
+// });
 
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'frontend', 'html', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // app.post('/books/add', (req, res) => {
