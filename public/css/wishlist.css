@@ -12,6 +12,7 @@
     src: url("../assets/fonts/body.otf") format("opentype");
 }
 
+
 body{
     background-color: var(--onyx);
 }
