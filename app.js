@@ -48,8 +48,6 @@ app.get('/', (req, res) => {
 // });
 
 app.listen(3000, () => {
-    console.log(__dirname);
-    console.log(path.join(__dirname, 'public', 'inventory.html'));
     console.log('Server is running on port 3000');
   }); 
 
