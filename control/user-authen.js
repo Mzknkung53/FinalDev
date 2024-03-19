@@ -10,15 +10,15 @@ module.exports.userAuthentication = async (req, res, next) => {
 
         // get logged in user's username from session
         const session_username = req.session.user.username;
-        console.log(isAdminSession);
+
         if (!loginSession) {
-            return res.redirect('/login?q=session-expired');
+            return res.redirect('/logout');
         }
 
         // check if username & password in session is match with 
         const username = await listUser.findAllByKey('user_name', session_username);
         if (!username || isAdminSession) {
-            return res.redirect('/login?q=session-expired');
+            return res.redirect('/logout');
         }
         next();
     } catch (err) {
