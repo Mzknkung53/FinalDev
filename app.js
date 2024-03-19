@@ -3,21 +3,72 @@ const app = express();
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const path = require('path');
+const db = require("./config/db");
+const listCategory = require("./model/listCategory");
+const listProduct = require("./model/listProduct");
+
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(bodyParser.json());
 
 app.use(express.static('public'));
 
-//  const db = mysql.createConnection({
-//      host: "127.0.0.1",
-//      user: "root",
-//      password: "Ned0930519556",
-//      database: "backoffice"
-//  });
+app.set("view engine", "ejs");
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'adminlogin.html'));
+app.get('/', async (req, res) => {
+    try {
+        res.render("frontend/index");
+
+        await listCategory.defineInitialCategories();
+        await listProduct.defineInitialProducts();
+        //res.status(500).send("Internal Server Error");
+        //res.sendFile(path.join(__dirname, 'public', 'inventory.html'));
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Internal Server Error");
+    }
 });
+
+app.get('/product', async (req, res) => {
+    const items = await listProduct.findAll();
+
+      // Render the view with the provided data
+      res.render("frontend/product", {
+          newListItems: items,
+      });
+})
+
+app.get('/product/tops', async (req, res) => {
+    const items = await listProduct.findAllByKey('category_id', 1);
+
+    res.render("frontend/product", {
+        newListItems: items,
+    });
+})
+
+app.get('/product/bottoms', async (req, res) => {
+    const items = await listProduct.findAllByKey('category_id', 2);
+    
+    res.render("frontend/product", {
+        newListItems: items,
+    });
+})
+
+
+app.get('/product/shoes', async (req, res) => {
+    const items = await listProduct.findAllByKey('category_id', 3);
+    
+    res.render("frontend/product", {
+        newListItems: items,
+    });
+})
+
+
+app.get('/wishlist', (req, res) => {
+    res.render("frontend/wishlist");
+})
 
 // app.post('/books/add', (req, res) => {
 //     const { bookName } = req.body; 
@@ -46,8 +97,6 @@ app.get('/', (req, res) => {
 //         res.json(rows); 
 //     });
 // });
-
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
-  }); 
-
+});
