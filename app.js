@@ -1,13 +1,31 @@
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
-const mysql = require('mysql2');
-const path = require('path');
-const db = require("./config/db");
-const listCategory = require("./model/listCategory");
-const listProduct = require("./model/listProduct");
+const listCategory = require('./model/listCategory');
+const listProduct = require('./model/listProduct');
+const listUser = require('./model/listUser');
+
+// login-register sesstion
+const session = require('express-session');
+const Authen = require("./control/user-authen");
+const store = new session.MemoryStore();
+
+const app = express();
+
+// define session
+app.use(session({
+    secret: 'secret',
+    cookie: { maxAge: 360000 },
+    saveUninitialized: false,
+    store
+}));
+
+app.use(function(req, res, next) {
+    res.locals.session = req.session;
+    next();
+  });
 
 app.use(express.static("public"));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(bodyParser.json());
@@ -20,16 +38,75 @@ app.get('/', async (req, res) => {
     try {
         res.render("frontend/index");
 
+        // Initial default data to the DB
         await listCategory.defineInitialCategories();
         await listProduct.defineInitialProducts();
-        //res.status(500).send("Internal Server Error");
-        //res.sendFile(path.join(__dirname, 'public', 'inventory.html'));
-        
+        await listUser.defineInitialUsers();
+
     } catch (error) {
         console.log(error);
         res.status(500).send("Internal Server Error");
     }
 });
+
+app.get('/login', async (req, res) => {
+    const items = await listProduct.findAll();
+
+      // Render the view with the provided data
+      res.render("frontend/login", {
+          newListItems: items,
+      });
+});
+
+// log-in authentication for user & admin
+app.post('/auth', async (req, res) => {
+    const {username, password} = req.body;
+    const oldUserName = await listUser.findAllByKey('user_name', username);
+    const oldPwd = await listUser.findAllByKey('user_password', password);
+    const isAdmin = await oldUserName[0].isAdmin;
+
+    try {
+        if(username && password){
+            if(req.session.authenticated){
+                res.redirect('/');
+            } else{
+                if(username == oldUserName[0].user_name && password == oldPwd[0].user_password){
+                    req.session.authenticated = true;
+                    req.session.user = {
+                        username, password
+                    };
+                    // check if user isAdmin
+                    if(isAdmin == 0 ){
+                        req.session.isAdmin = false;
+                        res.redirect('/');
+                    } else{
+                        req.session.isAdmin = true;
+                        res.redirect('/admin');
+                    }
+                    
+                } else{
+                    res.redirect('/login');
+                }
+            }
+        } else{
+            throw err;
+        }
+    } catch (error) {
+        res.redirect('/login');
+    }
+	
+});
+
+
+
+
+// user logout
+app.get('/logout',(req,res)=>{
+    req.session.destroy(function (err) {
+      res.redirect('/');
+     });
+  })
+
 
 app.get('/product', async (req, res) => {
     const items = await listProduct.findAll();
@@ -65,38 +142,37 @@ app.get('/product/shoes', async (req, res) => {
     });
 })
 
+// user must login to access to these page
 
 app.get('/wishlist', (req, res) => {
     res.render("frontend/wishlist");
 })
 
-// app.post('/books/add', (req, res) => {
-//     const { bookName } = req.body; 
-//     const sql = 'INSERT INTO books (BookName) VALUES (?)'; 
+app.get('/cart', Authen.userAuthentication, (req, res) => {
+    res.render("frontend/shoppingcart");
+})
 
-//     db.execute(sql, [bookName], (error, results) => { 
-//         if (error) {
-//             console.error('Error inserting into the database: ', error);
-//             return res.status(500).send('Internal Server Error');
-//         }
-//         console.log('Inserted book into database:', results);
-//         res.redirect('/'); 
-//     });
-// });
+// example
+app.get("/more", Authen.userAuthentication, function (req, res) {
+    res.render("more", {pageName: "Account"});
+  });
 
 
-// app.get('/books', (req, res) => {
-//     const sql = 'SELECT * FROM books'; 
+// backoffice side
+app.get('/admin', Authen.adminAuthentication , async (req, res) => {
+    const items = await listProduct.findAll();
+    res.render("backoffice/inventory", {pageName: "inventory", products: items});
+})
 
-//     db.query(sql, (err, rows) => {
-//         if (err) {
-//             console.error('Error fetching books from the database: ', err);
-//             return res.status(500).send('Internal Server Error');
-//         }
-//         console.log('Retrieved books from database:', rows);
-//         res.json(rows); 
-//     });
-// });
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+app.get('/admin/sales', Authen.adminAuthentication, (req, res) => {
+    res.render("backoffice/sales", {pageName: "sales"});
+})
+
+app.get('/admin/login', (req, res) => {
+    res.render("backoffice/adminlogin");
+})
+
+
+app.listen(3500, () => {
+    console.log('Server is running on port 3500');
 });

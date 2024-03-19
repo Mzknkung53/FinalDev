@@ -1,21 +1,21 @@
 const BaseSQLModel = require("./baseSQLModel");
 
 // Create a new class for a specific table
-class CategoriesModel extends BaseSQLModel {
+class UsersModel extends BaseSQLModel {
   constructor() {
-    super("category"); //table 'products'
+    super("user"); //table 'products'
   }
 
   //check if there is a record of todoItems in the database?
   // if there is no todoItems record, call setinitialItems() to define intial
-  async defineInitialCategories() {
+  async defineInitialUsers() {
    
     const results = await this.findAll()
       .then((results) => {
         if (results[0] == undefined) {
-          this.setinitialItems();
+          this.setinitialUsers();
         } else {
-          //console.log("All categories:", results);
+          console.log("All user:", results);
         }
       })
       .catch((error) => {
@@ -25,20 +25,22 @@ class CategoriesModel extends BaseSQLModel {
     return results;
   }
 
-  async setinitialItems() {
-    const item1 = {
-      name: "Tops",
-    };
-    const item2 = {
-      name: "Bottoms",
-    };
-    const item3 = {
-      name: "Shoes",
+  async setinitialUsers() {
+    const user1 = {
+      user_name: "test",
+      user_password: "1234",
+      isAdmin: "0",
     };
 
-    const defaultItems = [item1, item2, item3];
+    const admin1 = {
+      user_name: "admin",
+      user_password: "1111",
+      isAdmin: "1"
+    }
 
-    defaultItems.forEach((item) =>
+    const defaultUsers = [user1, admin1];
+
+    defaultUsers.forEach((item) =>
       this.create(item)
         .then((insertId) => {
           console.log("New user created with ID:", insertId);
@@ -52,10 +54,14 @@ class CategoriesModel extends BaseSQLModel {
   async getTodoItemsName(){
     const results =  await this.findByColumn('name');
     return results;
+  }
 
+  async getUserName(name){
+    const results = this.findAllByKey("user_name", name);
+    return results;
   }
 }
 
-const CategoriesDB = new CategoriesModel();
+const UsersDB = new UsersModel();
 
-module.exports = CategoriesDB;
+module.exports = UsersDB;
