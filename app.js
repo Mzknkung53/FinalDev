@@ -3,11 +3,13 @@ const bodyParser = require('body-parser');
 const listCategory = require('./model/listCategory');
 const listProduct = require('./model/listProduct');
 const listUser = require('./model/listUser');
+const listBill = require('./model/listBill');
 
 // login-register sesstion
 const session = require('express-session');
 const Authen = require("./control/user-authen");
 const store = new session.MemoryStore();
+const Cart = require('./model/cart');
 
 const app = express();
 
@@ -36,16 +38,18 @@ app.set("view engine", "ejs");
 
 app.get('/', async (req, res) => {
     try {
-        res.render("frontend/index");
+        const items = await listProduct.findAll();
+        res.render("frontend/index", {products: items});
 
         // Initial default data to the DB
         await listCategory.defineInitialCategories();
         await listProduct.defineInitialProducts();
         await listUser.defineInitialUsers();
+        await listBill.defineInitialBills();
 
     } catch (error) {
         console.log(error);
-        res.status(500).send("Internal Server Error");
+        res.status(500).send("Internal Server Error " + error);
     }
 });
 
@@ -61,29 +65,33 @@ app.get('/login', async (req, res) => {
 // log-in authentication for user & admin
 app.post('/auth', async (req, res) => {
     const { username, password } = req.body;
-    const oldUserName = await listUser.findAllByKey('user_name', username);
-    const oldPwd = await listUser.findAllByKey('user_password', password);
-    const isAdmin = await oldUserName[0].isAdmin;
+    const oldUser = await listUser.findAllByKey('user_name', username);
+    // const oldPwd = await listUser.findAllByKey('user_password', password);
+    const isAdmin = await oldUser[0].isAdmin;
 
     try {
         if (username && password) {
             if (req.session.authenticated) {
                 res.redirect('/');
             } else {
-                if (username == oldUserName[0].user_name && password == oldPwd[0].user_password) {
+                if (username == oldUser[0].user_name && password == oldUser[0].user_password) {
                     req.session.authenticated = true;
                     req.session.user = {
                         username, password
                     };
-                    // check if user isAdmin
-                    if (isAdmin == 0) {
-                        req.session.isAdmin = false;
-                        res.redirect('/');
-                    } else {
+                    if(isAdmin == 1){
                         req.session.isAdmin = true;
                         res.redirect('/admin');
                     }
 
+                    // check if user isAdmin
+                    if (isAdmin == 0) {
+                        req.session.isAdmin = false;
+                        res.redirect('/');
+                    } 
+                    
+
+                    console.log(req.session.isAdmin)
                 } else {
                     res.redirect('/login');
                 }
@@ -113,7 +121,7 @@ app.get('/product', async (req, res) => {
     // Render the view with the provided data
     res.render("frontend/product", {
         newListItems: items,
-        navSelect: 0 + 5,
+        navSelect: 0 + 4,
     });
 })
 
@@ -125,26 +133,94 @@ app.get("/product/:category", async (req, res) => {
     // use category's name to find category's id
     const categoryName = await listCategory.findAllByKey('name', category);
     const categoryId = categoryName[0].category_id;
-    
+ 
     // find product by category's id
     const items = await listProduct.findAllByKey('category_id', categoryId);
     
     res.render("frontend/product", {
         newListItems: items,
-        navSelect: parseInt(categoryId) + 5,
+        navSelect: parseInt(categoryId) + 4,
     });
 
   });
 
 
-// user must login to access to these page
-app.get('/wishlist', (req, res) => {
-    res.render("frontend/wishlist");
-})
+// shpping cart
 
-app.get('/cart', Authen.userAuthentication, (req, res) => {
-    res.render("frontend/shoppingcart");
-})
+app.get("/cart", Authen.userAuthentication, function (req, res, next) {
+    if(!req.session.cart) {
+      return res.render('frontend/shoppingcart', {products: null});
+    }
+    let cart = new Cart(req.session.cart);
+    //console.log(cart)
+    res.render("frontend/shoppingcart", {
+      products: cart.generateArray(),
+      totalPrice: cart.totalPrice,
+    });
+  });
+
+// add item to cart
+app.get('/add-to-cart/:id', async function(req, res) {
+    let productId = req.params.id;
+    let cart = new Cart(req.session.cart ? req.session.cart : {});
+  
+    const product = await listProduct.findByProductId(productId);
+    if(!product) {
+      return res.redirect('/');
+    } else {
+        //console.log(product.product_id);
+      cart.add(product, product.product_id);
+      req.session.cart = cart;
+    //   console.log(req.session.cart);
+      res.redirect('/product');
+    }
+  });
+
+  // decrease qty of item when click 'minus' button in shopping-cart
+app.get('/reduce/:reItem', function(req, res){
+    let productId = req.params.reItem;
+    let cart = new Cart(req.session.cart ? req.session.cart : {});
+  
+    cart.reduceByOne(productId);
+    req.session.cart = cart;
+    res.redirect('/cart');
+  });
+  
+  // increase qty of item when click 'plus' button in shopping-cart
+  app.get('/add/:reItem', function(req, res){
+    let productId = req.params.reItem;
+    let cart = new Cart(req.session.cart ? req.session.cart : {});
+  
+    cart.increaseByOne(productId);
+    req.session.cart = cart;
+    res.redirect('/cart');
+  });
+  
+  // remove all items when click 'bin' button in shopping-cart
+  app.get('/remove/:reItem', function(req, res){
+    let productId = req.params.reItem;
+    let cart = new Cart(req.session.cart ? req.session.cart : {});
+  
+    cart.removeItem(productId);
+    req.session.cart = cart;
+    res.redirect('/cart');
+  });
+
+
+  // checkout order
+  app.get("/checkout", Authen.userAuthentication, async function (req, res) {
+    let cart = new Cart(req.session.cart);
+  
+    await listBill.createNewBill(cart.totalQty, cart.totalPrice)
+    .then(function() {
+      req.session.cart = null;
+      res.redirect('/');
+    })
+    .catch(function(err) {
+      handleError(err);
+    });
+  });
+  
 
 // example
 app.get("/more", Authen.userAuthentication, function (req, res) {
@@ -185,8 +261,20 @@ app.get('/admin/inventory/:category', Authen.adminAuthentication, async (req, re
         });
 });
 
-app.get('/admin/sales', Authen.adminAuthentication, (req, res) => {
-    res.render("backoffice/sales", { pageName: "sales" });
+app.get('/admin/top_seller', Authen.adminAuthentication, async (req, res) => {
+    const items = await listProduct.findAll();
+    res.render("backoffice/top_seller", { pageName: "top_seller", products: items});
+});
+
+app.get('/admin/bills', Authen.adminAuthentication, async (req, res) => {
+    const bills = await listBill.findAll();
+    res.render("backoffice/sales_bills", { pageName: "bills", billLists: bills});
+});
+
+app.get('/admin/bills/id', Authen.adminAuthentication, async (req, res) => {
+    const bills = await listBill.findAll();
+    console.log(bills);
+    res.render("backoffice/bills", { pageName: "bills/id", billLists: bills});
 });
 
 app.get('/admin/delete-product/:id', (req, res) => {
@@ -201,6 +289,11 @@ app.post('/add-item', (req, res) => {
     listProduct.addNewProduct();
     res.redirect('/admin');
 });
+
+app.post('/admin/inventory/:category', (req, res) => {
+
+    res.redirect('admin');
+})
 
 app.post('/admin/inventory', (req, res) => {
 
@@ -220,6 +313,7 @@ app.post('/admin/inventory', (req, res) => {
         product_image: prodImg,
         product_price: prodPrice,
         product_price_promotion: prodProPrice,
+        product_tag: prodTag
     }
 
     listProduct.updateProduct(prodID, updateProduct)
@@ -227,6 +321,7 @@ app.post('/admin/inventory', (req, res) => {
     res.redirect('/admin');
 });
 
-app.listen(3500, () => {
-    console.log('Server is running on port 3500');
+const PORT = 3500;
+app.listen(PORT, () => {
+    console.log('Server is running on port '+ PORT);
 });

@@ -15,11 +15,38 @@
             <%- include('../templates/backoffice/dashboard') %>
 
             <div id="main" class="col">
-                <div class="row">
-                    <div class="col">
-                        <h1>Sales History</h1>
-                        <p>Graphs here and what not</p>
-                    </div>
+                <table class="table">
+                    <thead class="sticky-top">
+                        <tr>
+                            <th scope="col">Product ID</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Product Image</th>
+                            <th scope="col">Sales Count</th>
+                            <th scope="col">Total Income</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <form action="" method="post">
+
+                            <% for (let i = 0; i < products.length; i++) { %>
+                            <tr>
+                                <td><%=products[i].product_id%></td>
+                                
+                                <td><%=products[i].product_name%></td>
+                                <td class="prod-img">
+                                    <div class="img-container">
+                                        <span><img class="img" src="<%=products[i].product_image%>" alt="product"></span>
+                                    </div>
+                                </td>
+                                <td><%=products[i].product_sales_count%></td>
+                                
+                                <td>$ <%= (products[i].product_price_promotion * products[i].product_sales_count) %></td>
+                            </tr>
+                            <% } %>
+                            
+                        </form>
+                    </tbody>
+                </table>
 
                 <!-- <div id="Screen-Size-Checker">
                     <div class="d-none d-xxl-block">XXL</div>

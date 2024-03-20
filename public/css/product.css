@@ -1,44 +1,50 @@
-/* Second Nav */
-#secondNav{
-    
-
-    .page-nav {
-        background-color: var(--silver);
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;   
-
-        h1 {
-            order: 1;
-            padding-top: 12px;
-        }
-
-        .page-toggler {
-            order: 0;
-            padding-left: 0%;
-            position: fixed;
-            left: 3%;
-        }
-        
+#nav{
+    .navbar{
+        padding-bottom: 0;
     }
-    .nav-product{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-        .nav-link{
-            color: var(--onyx);
-            border-radius: 0;
+    
+    /* Second Nav */
+    #secondNav{
+        padding: 0;
 
-        }
-        .nav-link.active{
-            color: var(--white);
-            background-color: var(--falu-red);
-        }
-        .nav-link:hover:not(.active){
-            color: var(--white);
+        .page-nav {
             background-color: var(--silver);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;   
+
+            h1 {
+                order: 1;
+                padding-top: 12px;
+            }
+
+            .page-toggler {
+                order: 0;
+                padding-left: 0%;
+                position: fixed;
+                left: 3%;
+            }
+            
+        }
+        .nav-product{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            .nav-link{
+                color: var(--onyx);
+                border-radius: 0;
+
+            }
+            .nav-link.active{
+                color: var(--white);
+                background-color: var(--falu-red);
+            }
+            .nav-link:hover:not(.active){
+                color: var(--white);
+                background-color: var(--silver);
+            }
         }
     }
 }
@@ -48,8 +54,8 @@
     margin: 5px;
     color: var(--onyx);
     background-color: var(--onyx);
-    padding: 5vh;
-    padding-top: 20vh;
+    padding: 3rem;
+    padding-top: 15rem;
     
     h1 {
         text-align: left; 
@@ -85,7 +91,6 @@
             .item{
                 position: relative;
                 padding: 10px;
-                margin: 10px;
 
                 @media screen and (max-width: 992px){
                     margin-bottom: 15vw;
@@ -94,48 +99,48 @@
                 img {
                     min-width: 5em;
                     min-height: 7em;
-                    max-width: 15em;
-                    max-height: 21em;
                     width: 15vw;
                     height: 21vw;
                     border-radius: 5px;
                     object-fit:cover;
 
                     @media (max-width: 991px) { /* Adjusts for large screens */
-                        .Product-list .img-container .item {
-                          flex: 0 0 auto;
-                          width: 20%; /* Forces 5 items per row */
-                        }
+                        min-width: 7.5em;
+                        min-height: 10.5em;
+                        width: 25vw;
+                        height: 35vw;
                     }
                 }
 
                 .icons{
                     display: flex;
                     justify-content: center;
-                    font-size: 2.5rem;
+                    font-size: 3vw;
                     margin-top: -1.5em;
 
-                    @media screen and (max-width: 992px){
+                    @media screen and (max-width: 991px){
                         font-size: 5vw;
                         margin-top: -1.5em;
                     }
 
                     a{
-                        padding: 0 5vw;
+                        padding: 0;
                         display: table-cell;
                         color: var(--white);
+                        min-width: 5em;
+                        max-width: 15em;
+                        width: 15vw;
+                        border-bottom-left-radius: 5px; 
+                        border-bottom-right-radius: 5px;
+                        background-color: rgba(61, 61, 61, 0.3);
 
-                        @media screen and (max-width: 992px){
-                            padding: 0 15vw;
-
+                        @media screen and (max-width: 991px){
+                            padding: 0;
                         }
 
                     }
                     a:active{
                         color: var(--white);
-                    }
-                    .bi-heart:hover::before, .bi-heart:active{
-                        content: '\F415';
                     }
                     .bi-cart:hover::before, .bi-cart:active{
                         content: '\F23D';
@@ -145,15 +150,17 @@
         }
 
         button.btn{
-            margin-top: 3vh;
-            padding: 1vh 2vw 0 2vw;
+            padding: 0.5rem 1rem 0 1rem;
             border: none;
-            border-radius: 1vw;
-            font-size: 3vh;
-            height: 4rem;
+            border-radius: 1rem;
+            font-size: 2vw;
             color: var(--onyx);
             background-color: var(--silver);
             cursor: pointer;
+
+            @media screen and (max-width: 991px){
+                font-size: 3vw;
+            }
         }
         button.btn:hover{
             background-color: var(--falu-red);

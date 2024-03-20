@@ -33,9 +33,6 @@
         <!-- second nav -->
         <div class="container-fluid" id="secondNav">
           <div class="page-nav container-fluid w-100">
-            <button class="page-toggler" type="button" onclick="window.history.go(-1);">
-              <i class="bi bi-arrow-left"></i>
-            </button>
             <h1>Product</h1>
           </div>
           <div class="nav nav-product nav-pills nav-justified w-100">
@@ -51,31 +48,38 @@
     <section id="product_list" class="Product-list row no-gutters">
       <div class="col col-sm-12">
         <div class="container-fluid">
-          <div class="img-container row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+          <div class="img-container row row-cols-2 row-cols-lg-5">
 
             <% for (let i = 0; i < newListItems.length; i++) { %>
-            <div class="item col col-6 col-sm-6 col-md-4 col-lg">
+            <div class="item col">
               <img src="<%= newListItems[i].product_image %>" alt="Top-Seller">
               <div class="icons">
-                <a href="wishlist.html"><i class="bi bi-heart"></i></a>
-                <a href="shoppingcart.html"><i class="bi bi-cart"></i></a>
+                <a href="/add-to-cart/<%= newListItems[i].product_id %>"><i class="bi bi-cart"></i></a>
               </div>
             </div>
             <% } %>
 
+
           </div>
+
+            <div class="btn-container">
+              <a href="/product"><button class="btn">Previous Page</button></a>
+              <span>|</span>
+              <a href="/product"><button class="btn">Next Page</button></a>
+            </div>
+
         </div> 
       </div>
     </section>
   </div>
 
-    <!-- Footer -->
-    <%- include('../templates/frontend/footer') %>
+  <!-- Footer -->
+  <%- include('../templates/frontend/footer') %>
 
   <!-- Script -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      console.log("JS is working!");
+      //console.log("JS is working!");
       
       // nav select
       let navSelect = '<%- navSelect %>'
