@@ -1,6 +1,6 @@
 version: '3.3'
 services:
   frontend:
-    image: mzknkung53/Devopfinal:latest
+    image: mzknkung53/devopfinal:latest
     ports:
     - "3500:3500"
