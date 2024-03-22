@@ -1,20 +1,8 @@
-FROM node:10-alpine as node
- 
-WORKDIR /app
- 
-COPY package*.json /app/
- 
+FROM node:latest
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY package*.json /usr/src/app/
 RUN npm install
- 
-COPY ./ /app/
- 
-ARG TARGET=ng-deploy
- 
-RUN npm run ${TARGET}
- 
-FROM nginx:1.13
- 
-COPY --from=node /app/dist/ /usr/share/nginx/html
- 
-COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
+COPY . /usr/src/app/
+EXPOSE 3000
+CMD [ "node", "app.js" ]
