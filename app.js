@@ -4,12 +4,14 @@ const listCategory = require('./model/listCategory');
 const listProduct = require('./model/listProduct');
 const listUser = require('./model/listUser');
 const listBill = require('./model/listBill');
+const listSales = require('./model/listSales');
 
 // login-register sesstion
 const session = require('express-session');
 const Authen = require("./control/user-authen");
 const store = new session.MemoryStore();
 const Cart = require('./model/cart');
+const { uniq } = require('lodash');
 
 const app = express();
 
@@ -46,6 +48,7 @@ app.get('/', async (req, res) => {
         await listProduct.defineInitialProducts();
         await listUser.defineInitialUsers();
         await listBill.defineInitialBills();
+        await listSales.defineInitialSalesHistory();
 
     } catch (error) {
         console.log(error);
@@ -90,8 +93,6 @@ app.post('/auth', async (req, res) => {
                         res.redirect('/');
                     } 
                     
-
-                    console.log(req.session.isAdmin)
                 } else {
                     res.redirect('/login');
                 }
@@ -122,6 +123,7 @@ app.get('/product', async (req, res) => {
     res.render("frontend/product", {
         newListItems: items,
         navSelect: 0 + 4,
+        pageNum: 1
     });
 })
 
@@ -140,10 +142,31 @@ app.get("/product/:category", async (req, res) => {
     res.render("frontend/product", {
         newListItems: items,
         navSelect: parseInt(categoryId) + 4,
+        pageNum: 0,
     });
 
   });
 
+
+app.get("/product/page/:page", async (req, res) => {
+    // get category's name from path
+    let page = (req.params.page);
+   
+    console.log(page);
+    // // use category's name to find category's id
+    // const categoryName = await listCategory.findAllByKey('name', category);
+    // const categoryId = categoryName[0].category_id;
+ 
+    // // find product by category's id
+    const items = await listProduct.findAll();
+    
+    res.render("frontend/product", {
+        newListItems: items,
+        navSelect: 0 + 4,
+        pageNum: page
+    });
+
+});
 
 // shpping cart
 
@@ -210,14 +233,33 @@ app.get('/reduce/:reItem', function(req, res){
   // checkout order
   app.get("/checkout", Authen.userAuthentication, async function (req, res) {
     let cart = new Cart(req.session.cart);
-  
-    await listBill.createNewBill(cart.totalQty, cart.totalPrice)
-    .then(function() {
-      req.session.cart = null;
-      res.redirect('/');
-    })
-    .catch(function(err) {
-      handleError(err);
+
+    const products = cart.generateArray();
+
+    let bill_id = Math.floor(Math.random() * 100000);
+
+    const billStoreIDs = [];
+
+    billStoreIDs.push(bill_id);
+
+    products.forEach(async (product) =>{
+        console.log(billStoreIDs[0]);
+        const prodID = product.item.product_id;
+        const saleCount = product.item.product_sales_count;
+
+        console.log(product);
+        // update sale count
+        listProduct.updateProduct(prodID, {product_sales_count: (saleCount + product.qty)});
+
+        // add new bill
+        await listBill.createNewBill(product.qty, product.price, billStoreIDs[0], prodID)
+        .then(function() {
+          req.session.cart = null;
+          res.redirect('/');
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
     });
   });
   
@@ -262,19 +304,35 @@ app.get('/admin/inventory/:category', Authen.adminAuthentication, async (req, re
 });
 
 app.get('/admin/top_seller', Authen.adminAuthentication, async (req, res) => {
-    const items = await listProduct.findAll();
+    const items = await listSales.sortByIncome();
     res.render("backoffice/top_seller", { pageName: "top_seller", products: items});
 });
 
 app.get('/admin/bills', Authen.adminAuthentication, async (req, res) => {
-    const bills = await listBill.findAll();
-    res.render("backoffice/sales_bills", { pageName: "bills", billLists: bills});
+    const storedId = [];
+    const storedBill = [];
+    const bills = await listBill.sortByBillDate();
+    bills.forEach((bill) => {
+        storedId.push(bill.bill_id);
+    });
+   
+    uniqueArray = storedId.filter(function(item, pos) {
+        return storedId.indexOf(item) == pos;
+    })
+
+    for (let index = 0; index < uniqueArray.length; index++) {
+        const foundBill = await listBill.findByBillId(uniqueArray[index]);
+        storedBill.push(foundBill);
+    }
+    
+    res.render("backoffice/sales_bills", { pageName: "bills", listBill: storedBill});
 });
 
-app.get('/admin/bills/id', Authen.adminAuthentication, async (req, res) => {
-    const bills = await listBill.findAll();
-    console.log(bills);
-    res.render("backoffice/bills", { pageName: "bills/id", billLists: bills});
+app.get('/admin/bills/:id', Authen.adminAuthentication, async (req, res) => {
+    const id = req.params.id
+    const bills = await listBill.findAllByKey('bill_id', id);
+    
+    res.render("backoffice/bills", { pageName: "bills/id", billLists: bills, id: id});
 });
 
 app.get('/admin/delete-product/:id', (req, res) => {
