@@ -1,6 +1,27 @@
 version: '3.3'
+networks:
+  omeganetwork:
 services:
   frontend:
-    image: mzknkung53/devopfinal:latest
+    image: mzknkung53/omegaproject:latest
     ports:
     - "3500:3500"
+    networks:
+      - omeganetwork
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+    depends_on:
+      - db
+  db:
+    image: mysql:8.0
+    networks:
+      - omeganetwork
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+    

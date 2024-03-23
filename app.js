@@ -1,4 +1,6 @@
 const express = require('express');
+require('dotenv').config()
+
 const bodyParser = require('body-parser');
 const listCategory = require('./model/listCategory');
 const listProduct = require('./model/listProduct');

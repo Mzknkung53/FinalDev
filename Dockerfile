@@ -1,20 +1,13 @@
-FROM node:10-alpine as node
+FROM node:latest as node
  
 WORKDIR /app
  
 COPY package*.json /app/
  
-RUN npm install
+RUN npm ci
  
 COPY ./ /app/
+
+EXPOSE 3500
  
-ARG TARGET=ng-deploy
- 
-RUN npm run ${TARGET}
- 
-FROM nginx:1.13
- 
-COPY --from=node /app/dist/ /usr/share/nginx/html
- 
-COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
+CMD ["node", "app.js"] 
